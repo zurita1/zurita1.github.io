@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Ejercicio 10 - Detección de palíndromos</title>
+    
+        <script type="text/javascript">
+            alert(palindromo("La ruta nos aporto otro paso natural"));
+            alert(palindromo("Esta frase no se parece a ningun palindromo"));
+
+            function palindromo(cadena) {            
+                var cadenaMiniscula = cadena.toLowerCase();                
+                var CadenaEspacios = cadenaMiniscula.split("");                
+                var cadenaSinEspacios = "";
+                for(i in CadenaEspacios) {
+                    if(CadenaEspacios[i] != " ") {
+                    cadenaSinEspacios += CadenaEspacios[i];
+                    }
+                }            
+                var frase = cadenaSinEspacios.split("");
+                var fraseReves = cadenaSinEspacios.split("").reverse();            
+                var iguales = true;
+                for(i in frase) {
+                    if(frase[i] == fraseReves[i]) {
+                    }
+                    else {
+                        iguales = false;
+                    }
+                }                
+                if(iguales) {
+                return "La cadena : " +cadena+ ", es un palíndromo";
+                }
+                else {
+                    return "La cadena : " +cadena+ ", no es un palíndromo";
+                }
+            }            
+        </script>
+    </head>
+ 
+    <body>
+    </body>
+</html>
