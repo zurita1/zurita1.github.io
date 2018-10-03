@@ -1,6 +1,6 @@
 window.addEventListener("load",init);
 
-function añade() {
+function annade() {
     var elemento = document.createElement("li");
     var texto = document.createTextNode("Texto para introducir en lista");
     elemento.appendChild(texto);
@@ -11,5 +11,6 @@ function añade() {
 }
 
 function init(){
-    document.getElementById("button").addEventListener("click",añade);
+    document.getElementById("button").addEventListener("click",annade);
 }
+

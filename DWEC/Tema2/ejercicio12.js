@@ -3,7 +3,7 @@
 
     function muestra() {
         document.getElementById("texto").className = "visible";  
-    document.getElementById("mensaje").className = "oculto";
+        document.getElementById("mensaje").className = "oculto";
         
     }
 
