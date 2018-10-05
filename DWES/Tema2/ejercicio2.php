@@ -24,5 +24,5 @@
         }
     }
     echo "El mes tiene " . $dia . " días";
-}    
+   
 ?>

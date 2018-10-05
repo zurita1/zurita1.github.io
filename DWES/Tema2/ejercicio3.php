@@ -22,6 +22,6 @@
         }
 
         $edad = ($año - $AñoCumple);
-        echo "Según tu cumpleaños, la edad es " . $año . " años.";
-    }
+        echo "Según tu cumpleaños, la edad es " . $edad . " años.";
+    
 ?>
