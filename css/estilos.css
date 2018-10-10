@@ -61,14 +61,28 @@ margin-top:10px;
 }
 
 
-#asignaturas article{
-	
+#asignaturas article{	
 	width:100%;
-
 	max-width:280px;
-
 	margin:30px;
 }
+article {
+	text-align: center;
+}
+
+ul, a{
+	color: black;
+    list-style: none;
+    font-size: 17px;
+    text-align: center;
+	padding: 0px;
+	overflow: hidden;
+	text-decoration: none;
+
+}
+ul {
+	column-count: 2;
+  }
 
 #apartados h2,h3,h4,p{
 	text-align:center;
