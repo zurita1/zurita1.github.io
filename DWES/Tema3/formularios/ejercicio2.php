@@ -1,21 +1,50 @@
 <?php    
     $nombre="";
     $errorNombre ="";
+    $apellidos="";
+    $errorApellidos ="";
+    $email="";
+    $errorEmail ="";
+    $Genero="";
+    $errorGenero="";
+
     $totalError=false;
     $lponerFormulario = true;
 
     if (isset( $_POST['submit'])) {
         $lponerFormulario = false;    
         $nombre=$_POST['name'];
-         
+        $apellidos=$_POST['lastname'];
+        $email =$_POST['email'];
+        $Genero =$_POST['gender'];
+        mostrarFomulario();
+
        if(empty($_POST["name"])){
           $errorNombre="El nombre no puede estar vacio";
           $totalError =  true;
           $lponerFormulario = true;  
        }
-    } else {
-        $lponerFormulario =true
 
+       if(empty($_POST["lastname"])){
+            $errorApellidos="El apellido no puede estar vacio";
+            $totalError =  true;
+            $lponerFormulario = true;  
+        }
+
+        if(empty($_POST["email"])){
+            $errorEmail="El email no puede estar vacio";
+            $totalError =  true;
+            $lponerFormulario = true;  
+        }
+
+        if(empty($_POST["gender"])){
+            $errorGenero="El genero no puede estar vacio";
+            $totalError =  true;
+            $lponerFormulario = true;  
+        }
+
+    } else {
+        $lponerFormulario =true;
     }        
 ?>
 
@@ -44,18 +73,18 @@
                 <span class="error">*</span>
                 <br><br>
                 <label>Apellido:</label>
-                <input type="text" name="lastname" value="">
+                <input type="text" name="lastname" value=""><?php echo $errorApellidos; ?>
                 <span class="error">*</span>
                 <br><br>
                 <label>E-mail:</label>
-                <input type="text" name="email" value="">
+                <input type="text" name="email" value=""> <?php echo $errorEmail; ?>
                 <span class="error">*</span>
                 <br><br>
                 <label>Género:</label>
                 <br><br>
                     <input type="radio" name="gender" value="mujer" >Mujer
                     <input type="radio" name="gender" value="varon" >Varón
-                    <span class="error">*</span>
+                    <span class="error">*</span> <?php echo $errorGenero; ?>
                     <br>
                     <br>
                 <h3>Datos académicos y laborales</h3>
@@ -117,9 +146,14 @@
                 <input type="reset" value="Limpiar">
             <?php
             }
-            else{  // 1MOSTYRAFOR
-                echo " <h4> Nombre : </h4> ".$nombre;
+            else{ 
+               function mostrarFomulario(){
+                    echo " <h4> Nombre : </h4> ".$nombre;
+                    echo " <h4> Apellidos : </h4> ".$apellidos;
+                    echo " <h4> Email : </h4> ".$email;
+                    echo " <h4> Genero : </h4> ".$Genero;
             }
+        }
             ?>
            
           </form>    
