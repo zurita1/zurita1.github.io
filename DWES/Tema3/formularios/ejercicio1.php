@@ -19,12 +19,12 @@ $arrayMeses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', '
     
     <form method="post" >
     <input name="anno" type="number" required/>
-        <select name="mes">
-            <?php
-            foreach ($arrayMeses as $numeroMes => $mes) {
-                echo "<option value=" . ($numeroMes + 1) . ">" . $mes . "</option>";
-            }
-            ?>
+    <select name="mes">
+        <?php
+        foreach ($arrayMeses as $numeroMes => $mes) {
+            echo "<option value=" . ($numeroMes + 1) . ">" . $mes . "</option>";
+        }
+        ?>
     </select>
     <input type="submit" name="enviar" value="Enviar"/>
 
