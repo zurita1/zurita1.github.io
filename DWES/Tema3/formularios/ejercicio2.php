@@ -10,14 +10,17 @@
 
     $totalError=false;
     $lponerFormulario = true;
+   
 
     if (isset( $_POST['submit'])) {
-        $lponerFormulario = false;    
+        $lponerFormulario = false;           
+        print_r($_POST);
         $nombre=$_POST['name'];
         $apellidos=$_POST['lastname'];
         $email =$_POST['email'];
         $Genero =$_POST['gender'];
-        mostrarFomulario();
+        
+        
 
        if(empty($_POST["name"])){
           $errorNombre="El nombre no puede estar vacio";
@@ -41,11 +44,11 @@
             $errorGenero="El genero no puede estar vacio";
             $totalError =  true;
             $lponerFormulario = true;  
-        }
-
-    } else {
-        $lponerFormulario =true;
-    }        
+        }   
+       
+    }
+    
+    
 ?>
 
 <!DOCTYPE html>
@@ -64,12 +67,12 @@
         <br>
         <br>
         <p><span class="error">Campos requeridos.*</span></p>
-             <?php if ($lponerFormulario=true) { ?>
+             <?php if ($lponerFormulario OR !isset( $_POST['submit'])) { ?>
                 <form method="post" >
                 <h3>Datos personales</h3>
                 <br>
                 <label>Nombre:</label>
-                <input type="text" name="name" value=""> <?php echo $errorNombre; ?>
+                <input type="text" name="name" value="<?php echo $nombre ?>"> <?php echo $errorNombre; ?>
                 <span class="error">*</span>
                 <br><br>
                 <label>Apellido:</label>
@@ -116,9 +119,9 @@
                 <select name="levelEng">
                     <option value="b1">b1</option>
                     <option value="b2">b2</option>
-                    <option value="c1">c1</option>
-                    <option value="c2">c2</option>
-                    <option value="nativo">Nativo</option>
+                    <option value="c1" > c1</option>
+                    <option value="c2" >c2</option>
+                    <option value="nativo" ?>>Nativo</option>
                 </select><br><br><br>
                 <input type="checkbox" name="idioma2" value="Francés"/>Francés
                 <br><br><label>nivel:</label>
@@ -146,14 +149,15 @@
                 <input type="reset" value="Limpiar">
             <?php
             }
-            else{ 
-               function mostrarFomulario(){
+            else {
+
                     echo " <h4> Nombre : </h4> ".$nombre;
                     echo " <h4> Apellidos : </h4> ".$apellidos;
                     echo " <h4> Email : </h4> ".$email;
                     echo " <h4> Genero : </h4> ".$Genero;
-            }
-        }
+            }    
+        
+
             ?>
            
           </form>    
