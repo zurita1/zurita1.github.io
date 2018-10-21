@@ -77,7 +77,7 @@ article {
 	text-align: center;
 }
 
-ul, a{
+ul,li, a{
 	color: black;
     list-style: none;
     font-size: 17px;
@@ -85,7 +85,7 @@ ul, a{
 	padding: 0px;
 	overflow: hidden;
 	text-decoration: none;
-	column-count: 2;
+
 
 }
 
