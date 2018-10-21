@@ -85,8 +85,11 @@ ul,li, a{
 	padding: 0px;
 	overflow: hidden;
 	text-decoration: none;
-	column-count: 2;
+	
 
+}
+#tema2{
+	column-count: 2;
 }
 
 	
