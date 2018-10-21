@@ -78,7 +78,7 @@ article {
 }
 
 ul,li, a{
-	color: blue;
+	color: red;
     list-style: none;
     font-size: 17px;
     text-align: center;
@@ -87,6 +87,9 @@ ul,li, a{
 	text-decoration: none;
 
 
+}
+#tema2{
+	column-count: 2;
 }
 
 	
