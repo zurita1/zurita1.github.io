@@ -88,7 +88,9 @@ ul,li, a{
 	
 
 }
-
+#tema2{
+	column-count: 2;
+}
 
 	
 
