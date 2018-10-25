@@ -1,0 +1,19 @@
+.calculadora {
+            width: 200px;
+            height: 200px;
+            background-color: WHITE;;
+            border: 0.1px solid BLACK;
+            text-align: center;
+        }
+
+        .texto {
+            text-align: center;
+            margin: 3px 3px;
+        }
+
+        .button {
+            width: 45px;
+            height: 28px;
+            margin: 2px;
+            font-size: 10px;
+        }
