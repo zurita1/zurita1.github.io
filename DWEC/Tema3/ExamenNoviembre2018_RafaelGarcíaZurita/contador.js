@@ -4,11 +4,11 @@
         cont = document.getElementById("cont");
         contador(); 
         document.getElementById("resetear").addEventListener("click",resetear);
-        document.getElementById("atras").addEventListener("click",function(){
-            history.back();
-        })
+        document.getElementById("atras").addEventListener("click",atras);
     }
-    
+    function atras(){
+        history.back();
+    }
     function contador(){
         crear();
         sumar();
