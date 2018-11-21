@@ -1,7 +1,6 @@
 {
-    let cont
     function init(){  
-        cont = document.getElementById("cont");
+        let cont = document.getElementById("cont");
         contador(); 
         document.getElementById("resetear").addEventListener("click",resetear);
         document.getElementById("atras").addEventListener("click",atras);

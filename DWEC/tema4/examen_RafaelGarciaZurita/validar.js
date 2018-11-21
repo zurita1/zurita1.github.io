@@ -9,8 +9,8 @@
         document.getElementById("atras").addEventListener("click", atras);
         mensaje = document.getElementById("mensaje");
         boton = document.getElementById("comprobar");
-        boton.addEventListener("click",comprobar);
-        //matI.addEventListener("blur", comprobar);
+        //boton.addEventListener("click",comprobar);
+        matI.addEventListener("blur", comprobar);
     }
     function comprobar() {
         let regex = /(\d{4})\s(([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3})$/g;
