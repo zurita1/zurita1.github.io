@@ -1,19 +1,22 @@
 {
-    let botones = ["CE", "DEL", "%", "+", "7", "8", "9", "-", "4", "5", "6", "x", "1", "2", "3", "/", "0", "+-", ",", "="];
-    let elemento;
-    let input;
-    let contador = 0;
-    let nuevo = true;
-    let numero = 0;
-    let numero2 = 0;
-    let sumar = false;
-    let restar = false;
-    let multiplicar = false;
-    let dividir = false;
+let calculadora = {
+    botones: ["CE", "DEL", "%", "+", "7", "8", "9", "-", "4", "5", "6", "x", "1", "2", "3", "/", "0", "+-", ",", "="],
+    elemento:0,
+    input:0,
+    contador: 0,
+    nuevo: true,
+    numero: 0,
+    numero2: 0,
+    sumar:false,
+    restar:false,
+    multiplicar:false,
+    dividir:false,
+    inputText:0
+}
 
     function iniciar() {
         cbotones();
-        inputText = document.getElementById("inputText");
+        calculadora.inputText = document.getElementById("inputText");
         let botones = document.getElementsByTagName("input");
         for (let i = 0; i < botones.length; i++) {
             botones[i].addEventListener("click", funcionalidad);
