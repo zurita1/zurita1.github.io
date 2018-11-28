@@ -5,7 +5,7 @@
     let set = new Set();
     let concesionario;
     let fecha;
-    const regex = /(\d{4})\s(([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3})$/g;
+    const regex = /(\d{4})\s(([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3})$/gi;
 
     function init() {
         document.getElementById("eliminar").addEventListener("click", eliminar);
@@ -40,26 +40,20 @@
 
     }
     function annadir() {
-        let valor = regex.exec(matI.value);
-        limpiarConcesionario();
-        try {
-            regex.exec(matI.value);
-            if (regex.test(matI.value)) {
-                matI.value = "";
-                mensaje.innerHTML = "";
-                [matricula, , ,] = valor;
-                if (existeEnConcesionario(matricula.trim())) {
-                    mensaje.innerHTML = " Esa matricula ya existe en este concesionario";
-                } else {
-                    fecha = new Date().toLocaleString();
-                    set.add([matricula.trim(), fecha]);
-                    
-                }
+       // [matricula, , ,]= regex.exec(matI.value);
+        try {            
+            [matricula, , ,] =regex.exec(matI.value);
+            mensaje.innerHTML = "";
+            let matriculaMayuscula=matricula.trim().toUpperCase();
+            if (existeEnConcesionario(matriculaMayuscula)) {
+                mensaje.innerHTML = " Esa matricula ya existe en este concesionario";
             } else {
-                throw "Error en la matricula, antes de introducir compruebala en el validator";
+                fecha = new Date().toLocaleString();
+                set.add([matriculaMayuscula, fecha]);                   
             }
+            matI.value = "";           
         } catch (e) {
-            mensaje.innerHTML = e;
+            mensaje.innerHTML = "Matricula invalida";
         } finally{
             mostrarConcesionario();
         }
@@ -88,7 +82,7 @@
     function eliminar2(matricula) {
         let coche;
         set.forEach((value) => {
-            if (value[0] == matricula) {
+            if (value[0] === matricula) {
                 coche = value;
             }
         });
