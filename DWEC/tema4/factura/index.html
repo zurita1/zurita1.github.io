@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>RafaelGarciaZurita</title>
+    <script type="text/javascript" src="js/linea.js"></script>
+    <script type="text/javascript" src="js/Empresa.js"></script>
+    <script type="text/javascript" src="js/cliente.js"></script>
+    <script type="text/javascript" src="js/factura.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+
+<body>
+    <noscript>
+        Error javascript deshabilitado
+    </noscript>
+    <main>
+        <div class="container">
+            <div id="cabecera">
+                <label>Fecha:</label>
+                <input type="date"  value="" id="fecha" required />
+            </div>
+            <div id="containerDatos">
+                <div id="datosE">
+                    <h3>Empresa</h3>
+                    <label>Nombre</label>
+                    <input type="text" id="nombreE" value="" required />
+                    <label>CIF</label>
+                    <input type="text"  id="cifE" required value="" />
+                    <label >Dirección</label>
+                    <input type="text"  id="direccionE" value="" required />
+                    <label >Telefono</label>
+                    <input type="tel"  id="telefonoE" value="" required />
+                    
+                    <div class="containerButtons">
+                        <button id="guardarE">Guardar</button>
+                        <button id="limpiarE">Limpiar datos</button>
+                    </div>
+                    <span id="errorE"></span>
+                </div>
+
+                <div id="datosCliente">
+                    <h3>Cliente</h3>
+                    <label>Nombre</label>
+                    <input type="text" id="nombreC" value="" required />
+                    <label >CIF</label>
+                    <input type="text" id="cifC" required value="" />
+                    <label>Dirección</label>
+                    <input type="text" id="direccionC" value=" " required />
+                    <label >Telefono</label>
+                    <input type="tel"  id="telefonoC" value="" required />
+                    <div class="containerButtons">
+                        <button id="guardarC">Guardar</button>
+                        <button id="limpiarC">Limpiar datos</button>
+                    </div>
+                    <span id="errorC"></span>
+                </div>
+            </div>
+
+            <div id="otrosDatos">
+                <div id="observaciones">
+                    <h3>Observaciones:</h3>
+                    <textarea id="textObservaciones" cols="30" rows="10"></textarea>
+                </div>
+                <div id="retenciones">
+                    <h3>Retenciones:</h3>
+                    <label for="">I.R.P.F</label>
+                    <input id="irpf" type="text" required value="3" />
+                    <label for="">R.E</label>
+                    <input id="re" type="text" required value="2" />
+                    <p id="muestraTotal">Total (EUROS)</p>
+                </div>
+            </div>
+
+            <button id="factura">Crear factura</button>
+        </div>
+    </main>
+</body>
+
+</html>
