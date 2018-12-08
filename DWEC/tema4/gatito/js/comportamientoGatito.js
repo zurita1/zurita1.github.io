@@ -81,12 +81,7 @@
             edad.innerHTML = '<b>Fecha de Nacimiento:</b> ???'
             raza.innerHTML = '<b>Raza:</b> ???'
             peso.innerHTML = "<b>Peso:</b> ??? kg";
-            estado.innerHTML = "<h3>" + gato.getNombre() + " ha muerto!!!! </h3>"
-            inputNuevoGato = estado.appendChild(document.createElement('input'));
-            inputNuevoGato.type = "button";
-            inputNuevoGato.value = "Adopta otro gato";
-            inputNuevoGato.style.fontSize = "30px";
-            inputNuevoGato.addEventListener('click', () => (window.open("lindoGatito.html", "_SELF")));
+           
         }
     }
 

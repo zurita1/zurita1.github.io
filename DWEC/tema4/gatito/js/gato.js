@@ -6,7 +6,7 @@
     let peso;
     let muerto;
 
-    function Gato(nombre,edad,raza,peso){
+    function Gato(nombre="Garfield",edad=1,raza="persa",peso=5){
         this.nombre=nombre;
         this.edad=edad;
         this.raza=raza;
