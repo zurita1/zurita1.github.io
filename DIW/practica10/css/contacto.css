@@ -61,15 +61,15 @@ main {
 #formulario:hover #nombref:invalid, #formulario:hover #email:invalid {
     border: 2px solid red;
 }
-#formulario:hover textarea:invalid {
+#formulario:hover  #mensaje:invalid {
     border: 2px solid red;
 }
 
 
-#formulario:hover #nombreF:valid, #formulario:hover #email:valid {
+#formulario:hover #nombref:valid, #formulario:hover #email:valid {
     border: 2px solid green;
 }
-#formulario:hover textarea:valid {
+#formulario:hover #mensaje:valid {
     border: 2px solid green;
 }
   
