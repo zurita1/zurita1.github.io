@@ -19,6 +19,7 @@ header {
 #icono{
     width: 10%;
  }
+
  header img{
      width: 80%;
      align-content: center;
@@ -37,9 +38,26 @@ header {
     display: flex; 
     background-color:#0277BD;
 }
+.completo{
+    background-color:#0277BD;
+    display: flex; 
+}
+.iconos{ 
+   flex:1;
+}
+.fecha{ 
+    flex:1;
+   margin-left: 150px;
+ }
 .iconos img{
-    height: 20%;
+    height: 50%;
+    width:18%;
     margin-left: 10px;
+    margin-top:10px;
+}
+.iconos p{
+    font-size: 20px;
+    
 }
 .iconos img:hover{
     transition: 1s;
@@ -47,7 +65,6 @@ header {
     transform:rotate(360deg); 
 
 }
-
 .Tarea{
     border:3px solid;
     margin-bottom:20px;
@@ -67,9 +84,6 @@ header {
 .Tarea p{
    margin:15px;
  }
-.iconos img{
-    width: 8%;
-}
 #footer{
     display:none;
     background-color:#0277BD;
@@ -86,9 +100,9 @@ footer div img:hover{
     grid-template-rows: repeat(3,1fr);
 }
 
-header img{
-    width: 70%;
-}
+.fecha{ 
+    margin-left: 60px;
+  }
 #footer{
     justify-content: center;
     display:grid;
@@ -136,7 +150,10 @@ footer div>img{
     }
     header h1{
         font-size: 50px;
-     }
+    }
+    .fecha{ 
+        margin-left: 60px;
+      }
     #nombre{
         font-size: 27px;
     }
@@ -163,6 +180,12 @@ footer div>img{
     header h1{
         font-size: 50px;
      }
+     header{
+        background-size: 80px;
+    }
+    .fecha{ 
+        margin-left: 100px;
+      }
     #footer{     
         grid-gap: 30%;
     }
