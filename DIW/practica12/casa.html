@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Rafael Garcia Zurita">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/casa.css">
+    <title>Rafael García Zurita</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <a href="principal.html"><h1>Casas rurales</h1></a>
+        </div>
+        <div id="buscar">
+            <form action="#">
+                <label><input type="date" name="dateIn" id="date" required></label>
+                <label><input type="date" name="dateOut" value="" placeholder="" id="date2" required></label>
+                <input id="lugar" type="search" name="search" value="" placeholder="Lugar" required>
+                <label><input id="per" type="number" min="0" max="30" name="people" value="" placeholder=" Numero de personas" required></label><br><br>
+                <button type="button">Buscar</button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <section id="casa">
+            <h4>Silicon Valley - 40 Euros</h4>
+            <img src="img/casa.jpg" alt="Imagen de casa">
+            <div id="caracteristicas">
+                <h3>Características</h3>
+                <ul id="lista1">
+                    <li><img src="img/precio.svg">Precio: 24Euros pers/noche</li>
+                    <li><img src="img/cama.svg">Dormitorios: 3</li>
+                    <li><img src="img/personas.svg">Personas: 8</li>
+                    <li><img src="img/calefaccion.svg">Calefacción radial</li>
+                    <li><img src="img/piscina.svg">Piscina exterior</li>
+                    <li><img src="img/wifi.svg">Wifi</li>
+                </ul>
+
+                <ul id="lista2">
+                    <li><img src="img/jardin.svg">Zona de jardín</li>
+                    <li><img src="img/chimenea.svg">Chimenea de pellets</li>
+                    <li><img src="img/porche.svg">Porche delantero</li>
+                    <li><img src="img/barbacoa.svg"></i>Barbacoa de leña</li>
+                    <li><img src="img/lavavajillas.svg">Lavavajillas</li>
+                    <li><img src="img/parking.svg">Parking</li>
+                </ul>
+            </div>
+
+            <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3148.325714239627!2d-4.752807244027305!3d37.899448840456806!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbffe46580cc98fc4!2sIES+Gran+Capit%C3%A1n!5e0!3m2!1ses!2ses!4v1515835159554"
+                frameborder="0" allowfullscreen>
+            </iframe>
+        </section>
+
+        <section id="form">
+            <h3>Reserva</h3>
+            <form action="" method="get" accept-charset="utf-8" id="prueba">
+                <div id="formulario">
+                    <input type="text" name="" value="" id="nom" placeholder="Nombre" required>
+                    <input type="text" name="" value="" id="ap" placeholder="Apellido" required>
+                    <input type="tel" name="" value="" placeholder="telefono" id="tel" required>
+                    <input type="email" name="" value="" placeholder="email" id="email" required><br><br>
+                    <select name="per" required>
+                        <option value="">Personas</option>
+                        <option value="2">2</option>
+                        <option value="4">2-4</option>
+                        <option value="6">4-6</option>
+                    </select>
+                    <select name="mas" required>
+                        <option value="">Mascotas</option>
+                        <option value="2">Si</option>
+                        <option value="4">No</option>
+                    </select><br><br>
+                    <label>LLegada</label> <input type="date" name="" value="" placeholder="" id="date" required><br><br>
+                    <label>Salida</label><input type="date" name="" value="" placeholder="" id="date2" required><br><br>
+                    <input type="checkbox" name="" value="">Acepto los <a href="#" title="" required>Términos y
+                            condiciones</a>
+                    <div id="en">
+                            <input id="enviar" type="submit" name="" value="Enviar">
+                    </div>
+                           
+                    
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div id="footer">
+           <div id=nombre>
+               <p>Rafael Garcia Zurita</p>
+           </div>
+           <div id="redesSociales">
+               <div><img id="iconos" src="icon/facebook-square-brands.svg"></div>
+               <div><img id="iconos" src="icon/twitter-square-brands.svg"></div>
+               <div><img id="iconos" src="icon/linkedin-brands.svg"></div>
+               <div><img id="iconos" src="icon/github-brands.svg"></div>
+               <div><img id="iconos" src="icon/youtube-brands.svg"></div>
+           </div>
+       </div>
+   </footer>
+</body>
+
+</html>

@@ -1,0 +1,240 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    margin:0;
+    padding: 0;
+   
+}
+header {
+    border: 1px solid white; 
+    background-image: url("../img/campo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+}
+
+ header h1{
+   text-align: center;
+   font-size: 70px;
+   color:white;  
+  
+}
+header div> a{
+    text-decoration: none;
+}
+#buscar{
+    text-align: center;
+}
+#lugar{
+    width:165px;
+}
+#personas{
+    width:165px;
+}
+#per{
+    width:165px;
+}
+#per:invalid:focus, #lugar:invalid:focus, #date:focus, #date2:focus {
+    border: 2px solid red;
+}
+
+#per:valid:focus, #lugar:valid:focus, #date:valid, #date2:valid{
+    border: 2px solid green;
+}
+h4{
+	font-size: 20px;
+    margin-bottom: 15px;
+    margin-top: 35px;
+   
+}
+#casa{
+    margin: 0 auto;
+    text-align: center;
+  
+}
+main h3{
+	color:#DCEDC8;
+	text-align: center;
+	margin: 10px 5px 10px 5px;
+	background-color: #8BC34A;
+	border-radius: 5px;
+}
+#casa img {
+	width:80%;  
+}
+#casa ul{
+	list-style: none;
+     text-align: left;
+     margin:auto;
+}
+#casa ul li{
+margin:10px;
+}
+#caracteristicas{
+ margin-bottom:50px;
+ margin-top:50px;
+}
+#caracteristicas img {
+    width: 20px;
+    margin-right: 5px;
+}
+#map{
+	width:80%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+#formulario{
+    margin:auto;
+  	box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.3), 0 3px 6px 0 rgba(0, 0, 0, 0.19);
+      width:80%;
+      text-align: center;
+}
+ #nom:invalid:focus, #ap:invalid:focus, #tel:invalid:focus, #email:invalid:focus, #date:focus, #date2:focus {
+    border: 2px solid red;
+}
+
+#nom:valid:focus, #ap:valid:focus, #tel:valid:focus, #email:valid:focus, #date:valid, #date2:valid {
+    border: 2px solid green;
+}
+
+
+#form label{
+	display:block;
+	font-size: 80%;
+}
+#form input{
+  padding:5px;
+  border:none;
+  margin-top: 3px; 
+  outline: none;
+  border-bottom:1px solid #757575;
+  
+}
+#en{
+    text-align: center;
+    margin-top:15px; 
+}
+#enviar{
+    text-align: center; 
+    width: 50%; 
+	margin: 5px auto;	
+	background-color: #8BC34A;
+	border-radius: 10px;
+    color:white;
+    box-shadow: 0 6px 14px 0 #666;	
+
+}
+#footer{
+    display:none;
+    background-color: #8BC34A;
+}
+@media only screen and (min-width: 728px){
+    header h1{
+        font-size: 90px;
+     }
+    #buscar{
+        margin-top:120px;
+    } 
+    #lugar{
+        width:185px;
+    }
+    #personas{
+        width:185px;
+    }
+    h4{
+        font-size: 30px;
+        margin-bottom: 15px;
+        margin-top: 70px;
+    }
+    #caracteristicas{        
+        margin-right:100px;
+        margin-left:100px;
+        margin-top:20px;
+    }
+    #form{
+        margin-right:100px;
+        margin-left:100px;
+        margin-top:20px;
+    }
+    #formulario{
+        margin: 15px auto;
+          box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.3), 0 3px 6px 0 rgba(0, 0, 0, 0.19);
+          width:60%;
+          margin-bottom:50px;
+    }
+    #map{
+        width:50%;
+        height: 300px;
+    }
+    #footer{
+        justify-content: center;
+        display:grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 25%;
+    }
+    #nombre{
+        font-size: 23px;
+        margin-left: 20px;
+    }
+    #redesSociales{
+        display:grid;
+        grid-template-columns: repeat(5,1fr);
+        width: 300px;
+        margin-top:5px;
+        margin-bottom:30px; 
+        margin-right: 10px;
+        border-radius: 15px;
+    }
+    #redesSociales div{
+        width: 20px;
+        height: 50px;
+        margin-left: 8px;
+        margin-top:3px;
+    
+    }
+    footer div>img{
+        width: 30px;
+        height: 50px;
+       color:white; 
+    }
+    @media only screen and (min-width: 1024px){
+        #caracteristicas{        
+            margin-right:280px;
+            margin-left:280px;
+            margin-top:50px;
+        }
+        #formulario{
+            margin-top:20px;
+              width:75%;
+            }
+        #form{
+            margin-right:280px;
+            margin-left:280px;
+            margin-top:50px;
+        }
+        header h1{
+            font-size:120px;
+         }
+         #buscar{
+            margin-top:100px;
+        } 
+        #map{
+            width:60%;
+            height: 400px;
+        }
+        #nombre{
+            font-size: 27px;
+        }
+        #footer{
+            grid-gap: 20%;
+        }
+        #redesSociales{     
+            width: 400px;
+        }
+        footer div>img{
+            width: 40px;
+            height: 60px;
+        }
+    }
+}    
