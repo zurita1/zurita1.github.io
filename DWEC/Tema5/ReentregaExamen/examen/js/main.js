@@ -18,7 +18,7 @@
     let desayuno;
     let almuerzo;
     let cena;
-    
+
     function init() {
         nombre = document.getElementById("nombre");
         email = document.getElementById("email");
@@ -52,9 +52,10 @@
         hora.addEventListener("blur", validarTodos.bind(null, hora, ehora));
         noches.addEventListener("blur", validarTodos.bind(null, noches, enoches));
         personas.addEventListener("blur", validarTodos.bind(null, personas, epersonas));
+}
 
     }
-    patrones = {
+   let patrones = {
         nombre: [/^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$/,
             "El nombre debe tener al menos tres carácteres y un apellido."],
         email: [/^[^áéíóúÁÉÍÓÚ ()<>@,;:"\[\]\.ç%&]+@[^áéíóúÁÉÍÓÚ ()<>@,;:"\[\]\.ç%&]+.[^áéíóúÁÉÍÓÚ ()<>@,;:"\[\]\.ç%&]{2,4}$/,
