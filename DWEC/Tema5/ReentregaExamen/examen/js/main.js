@@ -52,7 +52,6 @@
         hora.addEventListener("blur", validarTodos.bind(null, hora, ehora));
         noches.addEventListener("blur", validarTodos.bind(null, noches, enoches));
         personas.addEventListener("blur", validarTodos.bind(null, personas, epersonas));
-}
 
     }
    let patrones = {
@@ -93,10 +92,10 @@
     }
     function mostrar() {
         try{
-        chekeaNombre();
-        chekeaEmail();
-        chekeaFecha();
-        chekeaHora();
+            chekea(hora,ehora);
+            chekea(nombre,enombre);
+            chekea(email,eemail);
+            chekea(fecha,efecha);
         if (eemail.innerHTML=="" && efecha.innerHTML=="" && enombre.innerHTML=="" && nombre.value!="" && email.value!="" && fecha.value!="" && hora.value!="" && noches.value!="" && personas.value!="") {
             let reserva = new Reserva(nombre.value, email.value, fecha.value, hora.value, noches.value,validarComida(),validarEdad());
             reserva.mostrar();
@@ -106,33 +105,12 @@
         }
 
     }
-    function chekeaHora(){
-        if (!patrones.hora[0].test(hora.value)) {
-            ehora.innerHTML = patrones.hora[1];
+    function chekea(input,error){
+        if (!patrones.input[0].test(input.value)) {
+            error.innerHTML = patrones.input[1];
             return error;
         }
-        enombre.innerHTML = "";
-    }
-    function chekeaNombre() {
-        if (!patrones.nombre[0].test(nombre.value)) {
-            enombre.innerHTML = patrones.nombre[1];
-            return error;
-        }
-        enombre.innerHTML = "";
-    }
-    function chekeaEmail() {
-        if (!patrones.email[0].test(email.value)) {
-            eemail.innerHTML = patrones.email[1];
-            return error;
-        }
-        eemail.innerHTML = "";
-    }
-    function chekeaFecha() {
-        if (!patrones.fecha[0].test(fecha.value)) {
-            efecha.innerHTML = patrones.fecha[1];
-            return error;
-        }
-        efecha.innerHTML = "";
+        error.innerHTML = "";
     }
     window.addEventListener("load", init);
 }
