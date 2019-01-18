@@ -12,8 +12,13 @@
     let enoches;
     let epersonas;
     let error;
-    let edad;
-
+    let edad1;
+    let edad2;
+    let edad3;
+    let desayuno;
+    let almuerzo;
+    let cena;
+    
     function init() {
         nombre = document.getElementById("nombre");
         email = document.getElementById("email");
