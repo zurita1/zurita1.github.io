@@ -85,6 +85,7 @@
 
     function validarTodos(input, error) {
         console.log(input)
+        chekea();
         if (input.value == "") {
             error.innerHTML = "El campo no puede estar vacio";
         } else
@@ -92,10 +93,7 @@
     }
     function mostrar() {
         try{
-        chekeaNombre();
-        chekeaEmail();
-        chekeaFecha();
-        chekeaHora();
+            chekea();
         if (eemail.innerHTML=="" && efecha.innerHTML=="" && enombre.innerHTML=="" && nombre.value!="" && email.value!="" && fecha.value!="" && hora.value!="" && noches.value!="" && personas.value!="") {
             let reserva = new Reserva(nombre.value, email.value, fecha.value, hora.value, noches.value,validarComida(),validarEdad());
             reserva.mostrar();
@@ -104,6 +102,13 @@
            error.textContent = e.message;
         }
 
+
+        function chekea() {
+            chekeaNombre();
+            chekeaEmail();
+            chekeaFecha();
+            chekeaHora();
+        }
     }
     function chekeaHora(){
         if (!patrones.hora[0].test(hora.value)) {
