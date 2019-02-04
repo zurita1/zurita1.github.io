@@ -190,8 +190,6 @@ grid-template-columns: repeat(2,1fr);
     margin-top:40px;
     margin-bottom: 60px;
 }
-
-
 #contacto {
     background-color: rgba(255, 255, 255, 0.55);
   }
@@ -281,7 +279,28 @@ footer div>img{
     height: 50px;
    color:white; 
 }
-
+@media only screen and (min-width: 375px){
+    #menuLink{
+        width: 70%; 
+    }
+    #imagenMenu{
+        width: 12%;
+        margin-left: 230px;
+        margin-top:10px;
+        display: block;
+    }
+}
+@media only screen and (min-width: 425px){
+    #menuLink{
+        width: 75%; 
+    }
+    #imagenMenu{
+        width: 12%;
+        margin-left: 270px;
+        margin-top:10px;
+        display: block;
+    }
+}
 @media only screen and (min-width: 728px){
     #menuLink{
         width: 60%;   
@@ -356,7 +375,7 @@ footer div>img{
         margin-bottom:40px;
     }
     form{
-        width: 60%;
+        width: 70%;
         margin:auto;
     }
 
@@ -365,7 +384,12 @@ footer div>img{
       }
       #contactoNombre, #contactoEmail{
         height: 30px;
+        width: 300px;
         margin:20px;
+      }
+      #contactoMsg{
+        height: 180px;
+        width: 230px; 
       }
       .formControl {
         margin-top: 50px;  
@@ -375,12 +399,12 @@ footer div>img{
         margin-top: 40px;
         margin-bottom: 20px;
         width: 30%;
-        height: 40px; 
+        height: 50px; 
       }
 
     
     #footer{
-        grid-gap: 15%;
+        grid-gap: 20%;
     }
     #nombre{
         font-size: 30px;
@@ -388,9 +412,13 @@ footer div>img{
     #redesSociales{
         width: 300px;
     }
+    footer div>img{
+        width: 35px;
+    }
 }
     
     @media only screen and (min-width:1024px){
+       
         #imagenMenu{
             width: 7%;
             margin-left: 850px;
@@ -415,18 +443,22 @@ footer div>img{
             font-size: 18px;
          
         }
+        #todo{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+        }
         .imagen1{
-            width: 8%;
-            margin-top:20px;
+            width: 10%;
+            margin-top:60px;
       }
       #habilidades h2{
-          font-size: 40px;
+          font-size: 35px;
           padding:15px;
           }
      
         .barra{
           height: 20px;
-          width: 60%;
+          width: 70%;
           margin-bottom: 100px;
           margin-top:20px;
       } 
@@ -435,7 +467,7 @@ footer div>img{
           font-size: 18px;
       }
       #proyectos h2{
-        font-size: 40px;
+        font-size: 35px;
           padding: 15px;
         }
         #proyectos p{
@@ -451,7 +483,7 @@ footer div>img{
             margin-bottom: 100px;
         }
           #contacto h2 {
-            font-size: 40px;
+            font-size: 35px;
             padding: 15px;
           }
 
@@ -462,13 +494,18 @@ footer div>img{
         form{
             width: 50%;
         }
+        #contactoNombre, #contactoEmail{
+            height: 30px;
+            width: 380px;
+            margin:20px;
+          }
+          #contactoMsg{
+            height: 180px;
+            width: 250px; 
+          }
     
          #formulario input::placeholder, #formulario textarea::placeholder {
             font-size: 25px;
-          }
-          #contactoNombre, #contactoEmail{
-            height: 40px;
-            margin:30px;
           }
           .formControl {
             margin-top: 60px;  
@@ -498,4 +535,81 @@ footer div>img{
             width: 40px;
             height: 60px;
         }
-}
+    }
+    @media only screen and (min-width:1440px){
+            #encabezado h1{
+                margin-top:10px;
+                margin-bottom:10px;
+                font-size:40px;
+               
+            }
+            #imagenMenu{
+                width: 4%;
+                margin-left: 1200px;
+                margin-top:3px;
+            }
+            #menuLink{
+                width: 90%;   
+            }
+            #contenedor {
+                margin-top:250px;
+            }
+             #contenedor h1{
+                 font-size: 80px;
+             }
+             #contenedor h2{
+                 font-size: 55px;
+             }
+             #sobremi{
+                width: 30%;
+                margin-top: 180px;
+                margin-bottom: 150px;
+            }
+            #sobremi p{
+                margin-left:30px;
+                font-size: 21px;
+                margin-bottom: 30px;
+             
+            }
+            .imagen1{
+                width: 13%;
+                margin-top:60px;
+          }
+         
+            .barra{
+              height: 23px;
+              width: 80%;
+              margin-bottom: 100px;
+              margin-top:20px;
+          } 
+          .porcentaje{
+              height: 23px;
+            
+        }
+        #proyectos img{
+            width: 45%;
+         max-height: 250px;
+        }
+        #contactoNombre, #contactoEmail{
+            height: 30px;
+            width: 420px;
+            margin:20px;
+          }
+          #contactoMsg{
+            height: 200px;
+            width: 280px; 
+          }
+          #proyectos h2{
+            font-size: 40px;
+              padding: 18px;
+            }
+        #habilidades h2{
+            font-size: 40px;
+            padding:18px;
+                }
+        #contacto h2{
+            font-size: 40px;
+            padding:18px;
+                    }
+    
+    }

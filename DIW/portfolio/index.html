@@ -32,11 +32,11 @@
 
     <nav id="nav">
         <ul id="slide" class="side-nav">
-			<li><a class="navLink" id="navAbout" href="#presentacion">¿Quien soy?</a></li>
-			<li><a class="navLink" id="navEdu" href="#habilidades">Habilidades</a></li>
-			<li><a class="navLink" id="navSkill" href="#proyectos">Proyectos</a></li>
-			<li><a class="navLink" id="navPro" href="#contacto">Contacta conmigo</a></li>
-		</ul>
+            <li><a class="navLink" id="navAbout" href="#presentacion">¿Quien soy?</a></li>
+            <li><a class="navLink" id="navEdu" href="#habilidades">Habilidades</a></li>
+            <li><a class="navLink" id="navSkill" href="#proyectos">Proyectos</a></li>
+            <li><a class="navLink" id="navPro" href="#contacto">Contacta conmigo</a></li>
+        </ul>
     </nav>
 
     <main>
@@ -58,43 +58,50 @@
             </article>
             <article id="habilidades">
                 <h2>Habilidades</h2>
-                <ul>
-                    <li>
+                <div id="todo">
+                    <div>
                         <div class="imagen"><img class="imagen1" src="icon/java.svg" alt=""></div>
                         <p><b>Java</b></p>
                         <div class="barra">
                             <div class="porcentaje bar70">70%</div>
                         </div>
-                    </li>
-                    <li>
+                    </div>
+                    <div>
                         <div class="imagen"><img class="imagen1" src="icon/html.svg" alt=""></div>
                         <p><b>HTML5</b></p>
                         <div class="barra">
                             <div class="porcentaje bar70">70%</div>
                         </div>
-                    </li>
-                    <li>
+                    </div>
+                    <div>
                         <div class="imagen"><img class="imagen1" src="icon/android.svg" alt=""></div>
                         <p><b>Android</b></p>
                         <div class="barra">
                             <div class="porcentaje bar50">50%</div>
                         </div>
-                    </li>
-                    <li>
+                    </div>
+                    <div>
                         <div class="imagen"><img class="imagen1" src="icon/javascript.svg" alt=""></div>
                         <p><b>Javascript</b></p>
                         <div class="barra">
                             <div class="porcentaje bar50">50%</div>
                         </div>
-                    </li>
-                    <li>
+                    </div>
+                    <div>
                         <div class="imagen"><img class="imagen1" src="icon/php.svg" alt=""></div>
                         <p><b>PHP</b></p>
                         <div class="barra">
                             <div class="porcentaje bar40">40%</div>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                    <div>
+                            <div class="imagen"><img class="imagen1" src="icon/sql.svg" alt=""></div>
+                            <p><b>Plsql</b></p>
+                            <div class="barra">
+                                <div class="porcentaje bar40">40%</div>
+                            </div>
+                    </div>
+                </div>
             </article>
             <article id="proyectos">
                 <h2>Proyectos</h2>
@@ -111,13 +118,13 @@
                 </div>
                 <div class="asignatura">
                     <p><b>JavaScript</b></p>
-                    <div class="imagenes">                     
-                            <a href="https://github.com/zurita1/zurita1.github.io/tree/master/DWEC/Tema6/buscaminas-Jquery">
-                                <img src="imagenes/buscaminas.PNG" alt="Buscaminas">
-                            </a>
-                            <a href="https://github.com/zurita1/zurita1.github.io/tree/master/DWEC/Tema5/ReentregaExamen/examen">
-                                <img src="imagenes/reentregaExamen.png" alt="reentregaExamen">
-                            </a>                      
+                    <div class="imagenes">
+                        <a href="https://github.com/zurita1/zurita1.github.io/tree/master/DWEC/Tema6/buscaminas-Jquery">
+                            <img src="imagenes/buscaminas.PNG" alt="Buscaminas">
+                        </a>
+                        <a href="https://github.com/zurita1/zurita1.github.io/tree/master/DWEC/Tema5/ReentregaExamen/examen">
+                            <img src="imagenes/reentregaExamen.png" alt="reentregaExamen">
+                        </a>
                     </div>
                 </div>
             </article>
@@ -134,7 +141,7 @@
                         <label for="contactoMsg" id="labelMsg"></label>
                         <textarea class="formControl" name="contactoMsg" id="contactoMsg" cols="30" rows="10"
                             placeholder="Mensaje" required></textarea>
-                            <br>
+                        <br>
 
                         <input id="enviar" type="submit">
                     </form>
