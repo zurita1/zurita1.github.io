@@ -28,9 +28,23 @@ let buscaminasGui = {
                "height": "50px",
                "margin": "3px"
             })
-            $div.click(function () {
-               buscaminasGui.picar(i, j)
-            });
+               $div.mousedown(function (event) {
+
+                  switch (event.buttons) {
+                     case 1:
+                        buscaminasGui.picar(i, j)
+                        break;
+                     case 2:
+                        buscaminasGui.marcar(i, j); 
+                        break;
+                     case 3:
+                        buscaminasGui.despejar(i, j);
+                        break;
+                     default:
+   
+                  }
+               })
+            
             $("#tablero").append($div);
             console.log($div);
          }
@@ -44,6 +58,21 @@ let buscaminasGui = {
       else
          buscaminas.picar(i, j);
          buscaminasGui.actualizarTablero();
+
+},
+marcar(i, j) {
+   buscaminas.tableroJugable[i][j] === "🏴"
+   let $valorM = $("#" + i + "-" + j)
+   $valorM.css({
+      "background-color": "blue",
+   });
+   if(buscaminas.tableroJugable[i][j] === "🏴"){
+   $valorM.css({
+      "background-color": "blue",
+   });
+   }
+},
+despejar(i,j) {
 
 },
 
@@ -68,8 +97,7 @@ let buscaminasGui = {
    },
 
       descubrirMinas() {
-   console.log("hola")
-   for (let i = 0; i < buscaminas.filas; i++) {
+      for (let i = 0; i < buscaminas.filas; i++) {
       for (let j = 0; j < buscaminas.columnas; j++) {
 
          let $id = $("#" + i + "-" + j)

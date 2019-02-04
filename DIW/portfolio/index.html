@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Rafael Garcia Zurita">
+    <title>Portfolio de Zurita</title>
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
+    <link rel="icon" type="image/png" href="imagenes/favicon.ico" />
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/fontello.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="js/jquery.js"></script>
+
+
+</head>
+
+<body>
+    <noscript>Error, javaScript deshabilitado</noscript>
+    <header>
+        <div id="encabezado">
+            <h1 class="icon-monitor">Zuri</h1>
+        </div>
+        <a href="#" id="menuLink"><img id="imagenMenu" alt="icnon de menu" src="icon/menu.svg"></a>
+    </header>
+
+    <nav id="nav">
+        <ul id="slide" class="side-nav">
+			<li><a class="navLink" id="navAbout" href="#presentacion">¿Quien soy?</a></li>
+			<li><a class="navLink" id="navEdu" href="#habilidades">Habilidades</a></li>
+			<li><a class="navLink" id="navSkill" href="#proyectos">Proyectos</a></li>
+			<li><a class="navLink" id="navPro" href="#contacto">Contacta conmigo</a></li>
+		</ul>
+    </nav>
+
+    <main>
+        <section>
+            <article id="presentacion">
+                <div id="contenedor">
+                    <h1>Soy Rafael García Zurita</h1>
+                    <h2>Desarrollador Web</h2>
+                </div>
+            </article>
+            <article id="sobremi">
+                <h4>Acerca de mi</h4>
+
+                <img id="perfil" alt="foto de perfil" src="imagenes/persona.png">
+                <p>Hola</p>
+                <p>Mi nombre es Rafael Garcia Zurita, y soy Desarrollador Web</p>
+                <p>Me estoy formando en el ciclo superior DAW, instituto IES Gran Capitan</p>
+
+            </article>
+            <article id="habilidades">
+                <h2>Habilidades</h2>
+                <ul>
+                    <li>
+                        <div class="imagen"><img class="imagen1" src="icon/java.svg" alt=""></div>
+                        <p><b>Java</b></p>
+                        <div class="barra">
+                            <div class="porcentaje bar70">70%</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="imagen"><img class="imagen1" src="icon/html.svg" alt=""></div>
+                        <p><b>HTML5</b></p>
+                        <div class="barra">
+                            <div class="porcentaje bar70">70%</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="imagen"><img class="imagen1" src="icon/android.svg" alt=""></div>
+                        <p><b>Android</b></p>
+                        <div class="barra">
+                            <div class="porcentaje bar50">50%</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="imagen"><img class="imagen1" src="icon/javascript.svg" alt=""></div>
+                        <p><b>Javascript</b></p>
+                        <div class="barra">
+                            <div class="porcentaje bar50">50%</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="imagen"><img class="imagen1" src="icon/php.svg" alt=""></div>
+                        <p><b>PHP</b></p>
+                        <div class="barra">
+                            <div class="porcentaje bar40">40%</div>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+            <article id="proyectos">
+                <h2>Proyectos</h2>
+                <div class="asignatura">
+                    <p><b>HTML5/CSS3</b></p>
+                    <div class="imagenes">
+                        <a href="https://github.com/iesgrancapitan-diw/practica12-diw-zurita1/tree/master/practica12">
+                            <img src="imagenes/casaRural.PNG" alt="Hoteles Rurales">
+                        </a>
+                        <a href="https://github.com/iesgrancapitan-diw/practica11-diw-zurita1/tree/master/practica11">
+                            <img src="imagenes/gestorTareas.PNG" alt="Gestor de tareas">
+                        </a>
+                    </div>
+                </div>
+                <div class="asignatura">
+                    <p><b>JavaScript</b></p>
+                    <div class="imagenes">                     
+                            <a href="https://github.com/zurita1/zurita1.github.io/tree/master/DWEC/Tema6/buscaminas-Jquery">
+                                <img src="imagenes/buscaminas.PNG" alt="Buscaminas">
+                            </a>
+                            <a href="https://github.com/zurita1/zurita1.github.io/tree/master/DWEC/Tema5/ReentregaExamen/examen">
+                                <img src="imagenes/reentregaExamen.png" alt="reentregaExamen">
+                            </a>                      
+                    </div>
+                </div>
+            </article>
+            <article id="contacto">
+                <h2>Contacta conmigo</h2>
+                <div id="formulario">
+                    <form action="" method="POST">
+                        <label for="contactoNombre" id="labelNombre"></label>
+                        <input class="formControl" type="text" name="contactoNombre" id="contactoNombre" placeholder="Nombre"
+                            required>
+                        <label for="contactoEmail" id="labelEmail"></label>
+                        <input class="formControl" type="email" name="contactoEmail" id="contactoEmail" placeholder="Email"
+                            required>
+                        <label for="contactoMsg" id="labelMsg"></label>
+                        <textarea class="formControl" name="contactoMsg" id="contactoMsg" cols="30" rows="10"
+                            placeholder="Mensaje" required></textarea>
+                            <br>
+
+                        <input id="enviar" type="submit">
+                    </form>
+                </div>
+            </article>
+
+        </section>
+    </main>
+    <footer>
+        <div id="footer">
+            <div id=nombre>
+                <p>Rafael Garcia Zurita</p>
+            </div>
+            <div id="redesSociales">
+                <div><img id="iconos" src="icon/facebook-square-brands.svg"></div>
+                <div><img id="iconos" src="icon/twitter-square-brands.svg"></div>
+                <div><img id="iconos" src="icon/linkedin-brands.svg"></div>
+                <div><img id="iconos" src="icon/github-brands.svg"></div>
+                <div><img id="iconos" src="icon/youtube-brands.svg"></div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
