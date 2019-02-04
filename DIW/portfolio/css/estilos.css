@@ -22,12 +22,12 @@ header{
 }
 
 #menuLink{
-    width: 75%; 
+    width: 60%; 
 }
 #imagenMenu{
-    width: 12%;
-    margin-left: 250px;
-    margin-top:8px;
+    width: 16%;
+    margin-left: 170px;
+    margin-top:10px;
     display: block;
 }
 
@@ -69,14 +69,14 @@ header::after {
   }
 #contenedor{
     text-align: center;
-    margin-top: 200px;  
+    margin-top: 160px;  
 	color:white;
 }
 #contenedor h1{
-    font-size: 50px;
+    font-size: 45px;
 }
 #contenedor h2{
-    font-size: 30px;
+    font-size: 25px;
 }
 #sobremi{
     width: 90%;
@@ -117,7 +117,7 @@ header::after {
       margin-top:15px;
 }
 #habilidades h2{
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     color:white;
     background-color:#333; 
@@ -165,7 +165,7 @@ header::after {
 }
 
 #proyectos h2{
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     color:white;
     background-color:#333; 
@@ -176,7 +176,7 @@ header::after {
 }
 #proyectos img{
 width: 80%;
-max-height: 132px;
+max-height:98px;
 display: block;
 margin:auto;
 }
@@ -196,7 +196,7 @@ grid-template-columns: repeat(2,1fr);
     background-color: rgba(255, 255, 255, 0.55);
   }
   #contacto h2 {
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     color:white;
     background-color:#333; 
@@ -252,18 +252,18 @@ footer div img:hover{
     justify-content: center;
     display:grid;
     grid-template-columns: repeat(2,1fr);
-    grid-gap: 5%;
+    grid-gap: 2%;
     border:1px solid transparent;
 }
 #nombre{
-    font-size: 20px;
-    margin-left: 10px;
-    margin-top:20px;
+    font-size: 16px;
+    margin-left: 5px;
+    margin-top:23px;
 }
 #redesSociales{
     display:grid;
     grid-template-columns: repeat(5,1fr);
-    width: 200px;
+    width: 150px;
     margin-top:5px;
     margin-bottom:30px; 
     margin-right: 10px;
@@ -271,13 +271,13 @@ footer div img:hover{
 }
 #redesSociales div{
     width: 20px;
-    height: 50px;
+    height: 40px;
     margin-left: 8px;
     margin-top:3px;
 
 }
 footer div>img{
-    width: 30px;
+    width: 23px;
     height: 50px;
    color:white; 
 }
