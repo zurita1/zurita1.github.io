@@ -50,9 +50,9 @@ header::after {
     z-index: -1;
   }
   nav {
-    background: rgb(71, 71, 71);
-    width: 50%;
-    height: 60%;
+    background: rgba(51, 51, 51, 0.829);
+    width: 140px;
+    height: 260px;
     position: fixed;
     display: none;
   }
@@ -74,9 +74,20 @@ header::after {
 }
 #contenedor h1{
     font-size: 45px;
+    text-shadow:
+    -2px -2px 0 black,  
+     2px -2px 0 black,
+     -2px 2px 0 black,
+      2px 2px 0 black;
+    
 }
 #contenedor h2{
     font-size: 25px;
+    text-shadow:
+    -2px -2px 0 black,  
+     2px -2px 0 black,
+     -2px 2px 0 black,
+      2px 2px 0 black;
 }
 #sobremi{
     width: 90%;
@@ -92,6 +103,7 @@ header::after {
 }
 #sobremi p{
     margin:13px;
+    
 }
 
 #perfil {
@@ -120,7 +132,12 @@ header::after {
     font-size: 30px;
     text-align: center;
     color:white;
-    background-color:#333; 
+    background-color:#333;
+    text-shadow:
+    -2px -2px 0 black,  
+     2px -2px 0 black,
+     -2px 2px 0 black,
+      2px 2px 0 black;
     }
 #habilidades p{
     text-align: center;
@@ -163,16 +180,33 @@ header::after {
 	width: 25%;
 	background-color: #DB5858;
 }
+#proyectos{   
+    background-image:  url("../imagenes/corcho.png");	
+    background-size: cover;
+    background-repeat: no-repeat;
+    border:1px solid transparent;
+}
 
 #proyectos h2{
     font-size: 30px;
     text-align: center;
     color:white;
-    background-color:#333; 
+    text-shadow:
+    -2px -2px 0 black,  
+     2px -2px 0 black,
+     -2px 2px 0 black,
+      2px 2px 0 black;
+    background-color:rgba(78, 54, 13, 0.753); 
 }
 #proyectos p{
     text-align: center;
     margin-bottom: 10px;
+    color:white;
+    text-shadow:
+    -1px -1px 0 black,  
+     1px -1px 0 black,
+     -1px 1px 0 black,
+      1px 1px 0 black;
 }
 #proyectos img{
 width: 80%;
@@ -198,6 +232,11 @@ grid-template-columns: repeat(2,1fr);
     text-align: center;
     color:white;
     background-color:#333; 
+    text-shadow:
+    -2px -2px 0 black,  
+     2px -2px 0 black,
+     -2px 2px 0 black,
+      2px 2px 0 black;
   }
 #formulario{
     display: flex;
@@ -257,6 +296,7 @@ footer div img:hover{
     font-size: 16px;
     margin-left: 5px;
     margin-top:23px;
+    color:white;
 }
 #redesSociales{
     display:grid;
@@ -302,6 +342,10 @@ footer div>img{
     }
 }
 @media only screen and (min-width: 728px){
+    nav {
+        width: 180px;
+        height: 230px;
+      }
     #menuLink{
         width: 60%;   
     }
@@ -544,25 +588,26 @@ footer div>img{
                
             }
             #imagenMenu{
-                width: 4%;
+                width: 3%;
                 margin-left: 1120px;
-                margin-top:3px;
+                margin-top:9x;
             }
             #menuLink{
                 width: 90%;   
             }
             #contenedor {
-                margin-top:300px;
+                margin-top:230px;
             }
              #contenedor h1{
-                 font-size: 80px;
+                 font-size: 65px;
+                
              }
              #contenedor h2{
-                 font-size: 55px;
+                 font-size: 45px;
              }
              #sobremi{
                 width: 30%;
-                margin-top: 180px;
+                margin-top:277px;
                 margin-bottom: 150px;
             }
             #sobremi p{
