@@ -536,7 +536,7 @@ footer div>img{
             height: 60px;
         }
     }
-    @media only screen and (min-width:1174){
+    @media only screen and (min-width:1174px){
             #encabezado h1{
                 margin-top:10px;
                 margin-bottom:10px;
@@ -545,14 +545,14 @@ footer div>img{
             }
             #imagenMenu{
                 width: 4%;
-                margin-left: 1200px;
+                margin-left: 1120px;
                 margin-top:3px;
             }
             #menuLink{
                 width: 90%;   
             }
             #contenedor {
-                margin-top:250px;
+                margin-top:300px;
             }
              #contenedor h1{
                  font-size: 80px;
