@@ -536,7 +536,7 @@ footer div>img{
             height: 60px;
         }
     }
-    @media only screen and (min-width:1440px){
+    @media only screen and (min-width:1174){
             #encabezado h1{
                 margin-top:10px;
                 margin-bottom:10px;
