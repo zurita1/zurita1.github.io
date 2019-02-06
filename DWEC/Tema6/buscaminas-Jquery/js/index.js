@@ -62,12 +62,7 @@
                 } else if (buscaminas.tableroCasillaPulsada[x][y] === "c-pulsada")
                     throw new Error("La bandera no se puede colocar");
                 //Sino  está descubierta y tiene bandera, la elimino.
-                else if (buscaminas.tableroCasillaPulsada[x][y] !== "c-pulsada" && buscaminas.tableroJugable[x][y] === "🏴") {
-                    buscaminas.tableroJugable[x][y] = "❑";
-                    console.clear();
-                    console.log("Tablero Jugable");
-                    console.table(buscaminas.tableroJugable);
-                }
+               
                 buscaminas.compruebaVictoriaBandera();
             } catch (e) {
                 //Muestro el mensaje de error

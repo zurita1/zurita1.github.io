@@ -1,6 +1,9 @@
+$final=false;
+
 function init() {
    $("#elegirNivel").change(buscaminasGui.iniciarJuego);
 };
+
 
 let buscaminasGui = {
    iniciarJuego() {
@@ -28,23 +31,18 @@ let buscaminasGui = {
                "height": "50px",
                "margin": "3px"
             })
-               $div.mousedown(function (event) {
 
-                  switch (event.buttons) {
-                     case 1:
-                        buscaminasGui.picar(i, j)
-                        break;
-                     case 2:
-                        buscaminasGui.marcar(i, j); 
-                        break;
-                     case 3:
-                        buscaminasGui.despejar(i, j);
-                        break;
-                     default:
-   
-                  }
-               })
-            
+            $div.click(function () {
+               buscaminasGui.picar(i, j)
+
+            })
+
+            $div.mousedown(function (e) {
+               buscaminasGui.marcar(e, i, j);
+            })
+
+
+
             $("#tablero").append($div);
             console.log($div);
          }
@@ -52,29 +50,32 @@ let buscaminasGui = {
    },
    picar(i, j) {
       if (buscaminas.tableroJugable[i][j] === "🏴")
-         return true; //Salgo si es una bandera.
+         return true;
       if (buscaminas.tableroJugable[i][j] === "x")
          buscaminasGui.descubrirMinas()
       else
          buscaminas.picar(i, j);
-         buscaminasGui.actualizarTablero();
+      buscaminasGui.actualizarTablero();
 
-},
-marcar(i, j) {
-   buscaminas.tableroJugable[i][j] === "🏴"
-   let $valorM = $("#" + i + "-" + j)
-   $valorM.css({
-      "background-color": "blue",
-   });
-   if(buscaminas.tableroJugable[i][j] === "🏴"){
-   $valorM.css({
-      "background-color": "blue",
-   });
-   }
-},
-despejar(i,j) {
-
-},
+   },
+   marcar(e, i, j) {  
+      if($final==false) {
+         if (e.which == 3) {        
+            buscaminasGui.eliminaMenuContextual();
+            buscaminas.marcar(i,j);
+            
+            let $valorM = $("#" + i + "-" + j)
+            $valorM.css({
+               "background-color": "blue",
+            });
+         }
+      }     
+   },
+   eliminaMenuContextual() {
+      $("#tablero").contextmenu(function (event) {
+         event.preventDefault();
+      })
+   },
 
    actualizarTablero() {
       for (const coordenada of buscaminas.casillaPulsada) {
@@ -96,20 +97,20 @@ despejar(i,j) {
       }
    },
 
-      descubrirMinas() {
+   descubrirMinas(){
+      $final=true;
       for (let i = 0; i < buscaminas.filas; i++) {
-      for (let j = 0; j < buscaminas.columnas; j++) {
+         for (let j = 0; j < buscaminas.columnas; j++) {
 
-         let $id = $("#" + i + "-" + j)
-         $id.prop("disabled", true);
-         $id.prop("click", null).off("click");
-         if (buscaminas.tableroDescubierto[i][j] === "x") {
-            $id.css({
-               "background-color": "red",
-            });
+            let $id = $("#" + i + "-" + j);
+            $id.unbind("click");
+            if (buscaminas.tableroDescubierto[i][j] === "x") {
+               $id.css({
+                  "background-color": "red",
+               });
+            }
          }
       }
-   }
-},
+   },
 }
 $(init);
