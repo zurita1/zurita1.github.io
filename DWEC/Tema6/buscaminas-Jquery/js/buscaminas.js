@@ -1,4 +1,4 @@
-$final=false;
+$final = false;
 
 function init() {
    $("#elegirNivel").change(buscaminasGui.iniciarJuego);
@@ -17,6 +17,7 @@ let buscaminasGui = {
          "display": "grid",
          "grid-template-columns": "repeat(" + buscaminas.columnas + ",1fr)",
          "width": buscaminas.columnas * 50 + "px",
+         "margin": "auto",
 
       });
 
@@ -41,35 +42,50 @@ let buscaminasGui = {
                buscaminasGui.marcar(e, i, j);
             })
 
+            $div.mousedown(function (e) {
+               buscaminasGui.despejar(e, i, j);
+            })
+
 
 
             $("#tablero").append($div);
-            console.log($div);
+            //console.log($div);
          }
       }
    },
    picar(i, j) {
-      if (buscaminas.tableroJugable[i][j] === "🏴")
+      if (buscaminas.tablero[i][j] === "B")
          return true;
-      if (buscaminas.tableroJugable[i][j] === "x")
+      if (buscaminas.tableroSolucion[i][j] === "x")
          buscaminasGui.descubrirMinas()
       else
          buscaminas.picar(i, j);
       buscaminasGui.actualizarTablero();
 
    },
-   marcar(e, i, j) {  
-      if($final==false) {
-         if (e.which == 3) {        
-            buscaminasGui.eliminaMenuContextual();
-            buscaminas.marcar(i,j);
-            
+   marcar(e, i, j) {
+      if ($final == false) {
+         if (e.which == 3) {
             let $valorM = $("#" + i + "-" + j)
-            $valorM.css({
-               "background-color": "blue",
-            });
+            buscaminasGui.eliminaMenuContextual();
+
+            if (buscaminas.marcar(i, j)) {
+               console.log("entra")
+               $valorM.css({
+                  "background-color": "blue",
+               });
+            } else {
+               $valorM.css({
+                  "background-color": "black",
+               });
+            }
+
          }
-      }     
+      }
+   },
+   despejar() {
+   
+   
    },
    eliminaMenuContextual() {
       $("#tablero").contextmenu(function (event) {
@@ -83,10 +99,10 @@ let buscaminasGui = {
          let j = coordenada.split("-")[1];
          let $valor = $("#" + i + "-" + j)
          $valor.off();
-         if (buscaminas.tableroJugable[i][j] === 0)
+         if (buscaminas.tableroSolucion[i][j] === 0)
             $valor.text("");
          else
-            $valor.text(buscaminas.tableroJugable[i][j]);
+            $valor.text(buscaminas.tableroSolucion[i][j]);
          $valor.css({
             "background-color": "#CCCCCC",
             "text-align": "center",
@@ -97,14 +113,14 @@ let buscaminasGui = {
       }
    },
 
-   descubrirMinas(){
-      $final=true;
+   descubrirMinas() {
+      $final = true;
       for (let i = 0; i < buscaminas.filas; i++) {
          for (let j = 0; j < buscaminas.columnas; j++) {
 
             let $id = $("#" + i + "-" + j);
             $id.unbind("click");
-            if (buscaminas.tableroDescubierto[i][j] === "x") {
+            if (buscaminas.tableroSolucion[i][j] === "x") {
                $id.css({
                   "background-color": "red",
                });
