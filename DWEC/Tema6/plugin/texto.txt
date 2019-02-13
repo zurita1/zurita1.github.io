@@ -1,0 +1,1 @@
+hola, este mensaje es de un archivo.txt medianre ajax

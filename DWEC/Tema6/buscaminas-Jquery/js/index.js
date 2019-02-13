@@ -29,8 +29,8 @@ let buscaminas = {
                 return false;
             }
                 buscaminas.descrubirCeros(x, y);
-                buscaminas.actualizaTablero();
                 buscaminas.pulsada[x][y] = true;
+                buscaminas.actualizaTablero();               
                 buscaminas.casillaPulsada.push(x + "-" + y);
 
         } catch (e) {
