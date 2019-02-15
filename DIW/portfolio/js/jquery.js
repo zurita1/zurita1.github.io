@@ -1,7 +1,7 @@
 function init() {
     $contar=0;
 
-    $('#menuLink').click(function () {
+    $('#imagenMenu').click(function () {
         $contar++;
         if($contar<2){
             $('#nav').css({
