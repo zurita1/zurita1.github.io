@@ -1,7 +1,7 @@
 let buscaminas = {
     tablero: [],
     tableroSolucion: [],
-    tableroBandera:[],
+    tableroBandera: [],
     filas: 0,
     columnas: 0,
     minas: 0,
@@ -10,7 +10,8 @@ let buscaminas = {
     casillaPulsada: [],
     //bandera
     pulsada: [],
- 
+    sumarBanderas: 0,
+
 
     init() {
         buscaminas.crearTableros();
@@ -25,13 +26,13 @@ let buscaminas = {
 
     picar(x, y) {
         try {
-            if(buscaminas.tableroSolucion[x][y]==="x"){
-                return false;
+            if (buscaminas.tableroSolucion[x][y] === "x") {
+               return buscaminasGui.descubrirMinas();
             }
-                buscaminas.descrubirCeros(x, y);
-                buscaminas.pulsada[x][y] = true;
-                buscaminas.actualizaTablero();               
-                buscaminas.casillaPulsada.push(x + "-" + y);
+            buscaminas.descrubirCeros(x, y);
+            buscaminas.pulsada[x][y] = true;
+            buscaminas.actualizaTablero();
+            buscaminas.casillaPulsada.push(x + "-" + y);
 
         } catch (e) {
             console.error(e.message);
@@ -42,10 +43,10 @@ let buscaminas = {
         try {
             if (buscaminas.tableroBandera[x][y] !== "B" && buscaminas.pulsada[x][y] == false) {
                 buscaminas.pulsada[x][y] == true;
-               buscaminas.tableroBandera[x][y] = "B"
+                buscaminas.tableroBandera[x][y] = "B"
                 console.log("true")
                 return true;
-            } else if (buscaminas.tableroBandera[x][y] === "B") {              
+            } else if (buscaminas.tableroBandera[x][y] === "B") {
                 buscaminas.pulsada[x][y] == false;
                 buscaminas.tableroBandera[x][y] = "";
                 console.log("false")
@@ -56,7 +57,27 @@ let buscaminas = {
             console.log(e.message);
         }
     },
-    
+    despejar(i, z) {
+        buscaminas.sumarBanderas = 0;
+        if (buscaminas.contarBanderas(i, z) === buscaminas.tablero[i][z]) {
+            for (let j = Math.max(i - 1, 0); j <= Math.min(i + 1, buscaminas.filas - 1); j++)
+                for (let k = Math.max(z - 1, 0); k <= Math.min(z + 1, buscaminas.columnas - 1); k++) {
+                    if (buscaminas.tableroBandera[j][k] !== "B")
+                        buscaminas.picar(j, k);
+                }
+        }
+    },
+    contarBanderas(i, z) {
+        for (let j = Math.max(i - 1, 0); j <= Math.min(i + 1, buscaminas.filas - 1); j++) {
+            for (let k = Math.max(z - 1, 0); k <= Math.min(z + 1, buscaminas.columnas - 1); k++) {
+                if (buscaminas.tableroBandera[j][k] === "B") {
+                    buscaminas.sumarBanderas++;
+                }
+            }
+        }
+        console.log(buscaminas.sumarBanderas);
+        return buscaminas.sumarBanderas;
+    },
 
     pedirNivel(dificultad) {
         switch (dificultad) {
@@ -87,8 +108,8 @@ let buscaminas = {
         for (let i = 0; i < buscaminas.filas; i++) {
             buscaminas.tablero[i] = [];
             buscaminas.tableroSolucion[i] = [];
-            buscaminas.pulsada[i]=[];
-            buscaminas.tableroBandera[i]=[]
+            buscaminas.pulsada[i] = [];
+            buscaminas.tableroBandera[i] = []
             for (let j = 0; j < buscaminas.columnas; j++) {
                 buscaminas.tablero[i][j] = 0;
                 buscaminas.tableroSolucion[i][j] = 0;

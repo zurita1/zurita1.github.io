@@ -30,7 +30,7 @@ let buscaminasGui = {
                "background-color": "black",
                "width": "50px",
                "height": "50px",
-               "margin": "3px"
+               "margin": "1px"
             })
 
             $div.click(function () {
@@ -54,38 +54,38 @@ let buscaminasGui = {
       }
    },
    picar(i, j) {
-      if (buscaminas.tablero[i][j] === "B")
-         return true;
-      if (buscaminas.tableroSolucion[i][j] === "x")
-         buscaminasGui.descubrirMinas()
-      else
-         buscaminas.picar(i, j);
-      buscaminasGui.actualizarTablero();
-
+      if ($final == false) {
+         if (buscaminas.tableroBandera[i][j] === "B")
+            return true;
+         else
+            buscaminas.picar(i, j);
+         buscaminasGui.actualizarTablero();
+      }
    },
    marcar(e, i, j) {
       if ($final == false) {
-         if (e.which == 3) {
+         if (e.buttons == 2) {
             let $valorM = $("#" + i + "-" + j)
             buscaminasGui.eliminaMenuContextual();
 
             if (buscaminas.marcar(i, j)) {
-               console.log("entra")
                $valorM.css({
                   "background-color": "blue",
                });
             } else {
-               $valorM.css({
-                  "background-color": "black",
-               });
+               if (buscaminas.pulsada[i][j] !== true)
+                  $valorM.css({
+                     "background-color": "black",
+                  });
             }
 
          }
       }
    },
-   despejar() {
-   
-   
+   despejar(e, i, j) {
+      if (e.buttons == 3)
+         buscaminas.despejar(i, j)
+
    },
    eliminaMenuContextual() {
       $("#tablero").contextmenu(function (event) {
@@ -98,7 +98,6 @@ let buscaminasGui = {
          let i = coordenada.split("-")[0];
          let j = coordenada.split("-")[1];
          let $valor = $("#" + i + "-" + j)
-         $valor.off();
          if (buscaminas.tableroSolucion[i][j] === 0)
             $valor.text("");
          else
@@ -107,7 +106,6 @@ let buscaminasGui = {
             "background-color": "#CCCCCC",
             "text-align": "center",
             "font-size": "40px"
-
          }
          )
       }
@@ -117,13 +115,13 @@ let buscaminasGui = {
       $final = true;
       for (let i = 0; i < buscaminas.filas; i++) {
          for (let j = 0; j < buscaminas.columnas; j++) {
-
-            let $id = $("#" + i + "-" + j);
-            $id.unbind("click");
+            let $valor = $("#" + i + "-" + j)
             if (buscaminas.tableroSolucion[i][j] === "x") {
-               $id.css({
-                  "background-color": "red",
-               });
+               if (buscaminas.tableroBandera !== "B") {
+                  $valor.css({
+                     "background-color": "red",
+                  });
+               }
             }
          }
       }
