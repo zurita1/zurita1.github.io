@@ -8,24 +8,39 @@
   <title>Rafael Garcia Zurita</title>
   <meta name="keywords" content="HTML,CSS,XML,JavaScript">
   <meta name="author" content="Rafael Garcia Zurita">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="js/index.js" type="text/javascript"></script>
   <script src="js/buscaminas.js" type="text/javascript"></script>
 </head>
-
+<style>
+  #todo {
+   display: flex;
+    align-items: center; 
+    flex-direction: column; 
+  }
+  #muestraFinal {
+  height: 80px;
+  }
+  
+</style>
 <body>
   <noscript>Error, el javascript esta deshabilitado</noscript>
-
-  <div>
+  <div id="todo">
     <select name="nivel" id="elegirNivel">
       <option value="Elige la dificultad">Elige la dificultad</option>
       <option value="facil">Fácil</option>
       <option value="intermedio">Intermedio</option>
       <option value="experto">Experto</option>
     </select>
-    <div id="tablero"></div>
+    <div id="muestraFinal">
+      <h1 id="textoFinal"></h1>
+    </div>
+    <div id="tablero">
+      
+    </div>
   </div>
+
 </body>
 
 </html>

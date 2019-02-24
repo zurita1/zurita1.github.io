@@ -8,7 +8,6 @@ function init() {
 let buscaminasGui = {
    iniciarJuego() {
       buscaminas.pedirNivel($(this).val());
-
       buscaminasGui.generarTablero();
    },
    generarTablero() {
@@ -71,11 +70,15 @@ let buscaminasGui = {
             if (buscaminas.marcar(i, j)) {
                $valorM.css({
                   "background-color": "blue",
+               }).fadeOut("slow", "linear", function () {
+                  $(this).fadeIn(700);
                });
             } else {
                if (buscaminas.pulsada[i][j] !== true)
                   $valorM.css({
                      "background-color": "black",
+                  }).fadeOut("fast", function () {
+                     $(this).fadeIn(400);
                   });
             }
 
@@ -83,9 +86,18 @@ let buscaminasGui = {
       }
    },
    despejar(e, i, j) {
-      if (e.buttons == 3)
-         buscaminas.despejar(i, j)
-
+      if (e.buttons == 3) {
+         buscaminas.despejar(i, j);
+         if (buscaminas.casillaVacia.length > 0) {
+            console.log("entra")
+            for (const coordenada of buscaminas.casillaVacia) {
+               $("#" + coordenada).css({
+               }).fadeOut(200, function () {
+                  $("#" + coordenada).fadeIn(200);
+               });
+            }
+         }
+      }
    },
    eliminaMenuContextual() {
       $("#tablero").contextmenu(function (event) {
@@ -102,25 +114,42 @@ let buscaminasGui = {
             $valor.text("");
          else
             $valor.text(buscaminas.tableroSolucion[i][j]);
+
          $valor.css({
             "background-color": "#CCCCCC",
             "text-align": "center",
-            "font-size": "40px"
-         }
-         )
+            "font-size": "40px",
+            "transform": " rotateX(360deg)",
+            "transition-duration": "1s"
+         });
       }
    },
 
    descubrirMinas() {
+      $("#textoFinal").text("¡Has perdido!");
+      setTimeout(function () {
+         console.log("pasa")
+         $('#muestraFinal').show("puff");
+      }, 200);
       $final = true;
+      let contador = 0;
+
       for (let i = 0; i < buscaminas.filas; i++) {
          for (let j = 0; j < buscaminas.columnas; j++) {
             let $valor = $("#" + i + "-" + j)
             if (buscaminas.tableroSolucion[i][j] === "x") {
+               contador += 100;
                if (buscaminas.tableroBandera !== "B") {
-                  $valor.css({
-                     "background-color": "red",
-                  });
+                  setTimeout(function () {
+                     $valor.css({
+                        "background": "red",
+                        "transform": "rotate(1000deg)",
+                        "transition-duration": "2s"
+                  }).animate({
+                     height: "50px",
+                     width: "50px"
+                  }, 1000);
+                  }, contador);
                }
             }
          }

@@ -8,6 +8,7 @@ let buscaminas = {
     nivel: "",
     //guardo casillas 
     casillaPulsada: [],
+    casillaVacia: [],
     //bandera
     pulsada: [],
     sumarBanderas: 0,
@@ -18,7 +19,12 @@ let buscaminas = {
         buscaminas.crearMinas();
         buscaminas.mostrar();
     },
-
+    reiniciar() {
+        buscaminas.filas = 0;
+        buscaminas.columnas = 0;
+        buscaminas.minas = 0;
+        buscaminas.numBanderas = 0;
+    },
     mostrar() {
         console.log("Tablero Descubierto - Pruebas");
         console.table(buscaminas.tableroSolucion);
@@ -27,7 +33,7 @@ let buscaminas = {
     picar(x, y) {
         try {
             if (buscaminas.tableroSolucion[x][y] === "x") {
-               return buscaminasGui.descubrirMinas();
+                return buscaminasGui.descubrirMinas();
             }
             buscaminas.descrubirCeros(x, y);
             buscaminas.pulsada[x][y] = true;
@@ -58,6 +64,7 @@ let buscaminas = {
         }
     },
     despejar(i, z) {
+        buscaminas.casillaVacia=[];
         buscaminas.sumarBanderas = 0;
         if (buscaminas.contarBanderas(i, z) === buscaminas.tablero[i][z]) {
             for (let j = Math.max(i - 1, 0); j <= Math.min(i + 1, buscaminas.filas - 1); j++)
@@ -65,6 +72,15 @@ let buscaminas = {
                     if (buscaminas.tableroBandera[j][k] !== "B")
                         buscaminas.picar(j, k);
                 }
+        } else {
+            console.log("entra")
+            for (let j = Math.max(i - 1, 0); j <= Math.min(i + 1, buscaminas.filas - 1); j++) {
+                for (let k = Math.max(z - 1, 0); k <= Math.min(z + 1, buscaminas.columnas - 1); k++) {
+                    if (buscaminas.tableroBandera[j][k] !== "B" && buscaminas.pulsada[j][k]==false) {
+                        buscaminas.casillaVacia.push(j + "-" + k);
+                    }
+                }
+            }
         }
     },
     contarBanderas(i, z) {
