@@ -1,4 +1,5 @@
 $final = false;
+contador = 0;
 
 function init() {
    $("#elegirNivel").change(buscaminasGui.iniciarJuego);
@@ -59,6 +60,14 @@ let buscaminasGui = {
          else
             buscaminas.picar(i, j);
          buscaminasGui.actualizarTablero();
+      }
+      if (buscaminas.comprobarVictoria()) {
+         $final = true;
+         $("#textoFinal").text("¡Has Ganado!");
+         setTimeout(function () {
+            console.log("pasa")
+            $('#muestraFinal').show("puff");
+         }, 200);
       }
    },
    marcar(e, i, j) {
@@ -145,10 +154,10 @@ let buscaminasGui = {
                         "background": "red",
                         "transform": "rotate(1000deg)",
                         "transition-duration": "2s"
-                  }).animate({
-                     height: "50px",
-                     width: "50px"
-                  }, 1000);
+                     }).animate({
+                        height: "50px",
+                        width: "50px"
+                     }, 1000);
                   }, contador);
                }
             }

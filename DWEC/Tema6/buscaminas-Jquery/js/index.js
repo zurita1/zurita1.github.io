@@ -2,6 +2,7 @@ let buscaminas = {
     tablero: [],
     tableroSolucion: [],
     tableroBandera: [],
+    casillasResultanteA: [],
     filas: 0,
     columnas: 0,
     minas: 0,
@@ -9,6 +10,7 @@ let buscaminas = {
     //guardo casillas 
     casillaPulsada: [],
     casillaVacia: [],
+    casillasResultante: 0,
     //bandera
     pulsada: [],
     sumarBanderas: 0,
@@ -39,7 +41,7 @@ let buscaminas = {
             buscaminas.pulsada[x][y] = true;
             buscaminas.actualizaTablero();
             buscaminas.casillaPulsada.push(x + "-" + y);
-
+            buscaminas.comprobarVictoria();
         } catch (e) {
             console.error(e.message);
 
@@ -48,14 +50,10 @@ let buscaminas = {
     marcar(x, y) {
         try {
             if (buscaminas.tableroBandera[x][y] !== "B" && buscaminas.pulsada[x][y] == false) {
-                buscaminas.pulsada[x][y] == true;
                 buscaminas.tableroBandera[x][y] = "B"
-                console.log("true")
                 return true;
             } else if (buscaminas.tableroBandera[x][y] === "B") {
-                buscaminas.pulsada[x][y] == false;
                 buscaminas.tableroBandera[x][y] = "";
-                console.log("false")
                 return false;
             }
 
@@ -64,7 +62,7 @@ let buscaminas = {
         }
     },
     despejar(i, z) {
-        buscaminas.casillaVacia=[];
+        buscaminas.casillaVacia = [];
         buscaminas.sumarBanderas = 0;
         if (buscaminas.contarBanderas(i, z) === buscaminas.tablero[i][z]) {
             for (let j = Math.max(i - 1, 0); j <= Math.min(i + 1, buscaminas.filas - 1); j++)
@@ -73,10 +71,9 @@ let buscaminas = {
                         buscaminas.picar(j, k);
                 }
         } else {
-            console.log("entra")
             for (let j = Math.max(i - 1, 0); j <= Math.min(i + 1, buscaminas.filas - 1); j++) {
                 for (let k = Math.max(z - 1, 0); k <= Math.min(z + 1, buscaminas.columnas - 1); k++) {
-                    if (buscaminas.tableroBandera[j][k] !== "B" && buscaminas.pulsada[j][k]==false) {
+                    if (buscaminas.tableroBandera[j][k] !== "B" && buscaminas.pulsada[j][k] == false) {
                         buscaminas.casillaVacia.push(j + "-" + k);
                     }
                 }
@@ -94,7 +91,33 @@ let buscaminas = {
         console.log(buscaminas.sumarBanderas);
         return buscaminas.sumarBanderas;
     },
-
+    comprobarVictoria() {
+        if (buscaminas.casillasTotales() === buscaminas.casillasAbiertas()) {
+            return true;
+        }
+    },
+    casillasTotales() {
+        let casilla = 0;
+        for (let i = 0; i < buscaminas.columnas; i++) {
+            for (let j = 0; j < buscaminas.filas; j++) {
+                if (buscaminas.tableroSolucion[i][j] !== "x") {
+                    casilla++;
+                }
+            }
+        }
+        return casilla;
+    },
+    casillasAbiertas() {
+        let casilla = 0;
+        for (let i = 0; i < buscaminas.columnas; i++) {
+            for (let j = 0; j < buscaminas.filas; j++) {
+                if (buscaminas.pulsada[i][j] === true) {
+                    casilla++;
+                }
+            }
+        }
+        return casilla;
+    },
     pedirNivel(dificultad) {
         switch (dificultad) {
             case "facil":
@@ -125,12 +148,14 @@ let buscaminas = {
             buscaminas.tablero[i] = [];
             buscaminas.tableroSolucion[i] = [];
             buscaminas.pulsada[i] = [];
-            buscaminas.tableroBandera[i] = []
+            buscaminas.tableroBandera[i] = [];
+            buscaminas.casillasResultanteA[i] = [];
             for (let j = 0; j < buscaminas.columnas; j++) {
                 buscaminas.tablero[i][j] = 0;
                 buscaminas.tableroSolucion[i][j] = 0;
                 buscaminas.pulsada[i][j] = false;
                 buscaminas.tableroBandera[i][j] = "";
+                buscaminas.casillasResultanteA[i][j] = false
             }
         }
     },
@@ -154,16 +179,17 @@ let buscaminas = {
     },
 
     descrubirCeros(x, y) {
-        if (buscaminas.pulsada[x][y] === false) {
-            buscaminas.pulsada[x][y] = true;
-            if (buscaminas.tableroSolucion[x][y] === 0) {
-                for (let j = Math.max(x - 1, 0); j <= Math.min(x + 1, buscaminas.filas - 1); j++)
-                    for (let k = Math.max(y - 1, 0); k <= Math.min(y + 1, buscaminas.columnas - 1); k++) {
-                        buscaminas.pulsada[x][y] = true;
+        if (buscaminas.tableroSolucion[x][y] === 0) {
+
+            for (let j = Math.max(x - 1, 0); j <= Math.min(x + 1, buscaminas.filas - 1); j++)
+                for (let k = Math.max(y - 1, 0); k <= Math.min(y + 1, buscaminas.columnas - 1); k++) {
+                    if (buscaminas.pulsada[j][k] === false) {
+                        buscaminas.pulsada[j][k] = true;
                         buscaminas.casillaPulsada.push(j + "-" + k);
-                        buscaminas.descrubirCeros(j, k);
+                        buscaminas.picar(j, k);
                     }
-            }
+                }
+
         }
     },
     actualizaTablero() {
