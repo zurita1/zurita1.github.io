@@ -3,10 +3,14 @@ contador = 0;
 
 function init() {
    $("#elegirNivel").change(buscaminasGui.iniciarJuego);
+   $("#reiniciar").click(buscaminasGui.reiniciar);
 };
 
 
 let buscaminasGui = {
+   reiniciar(){
+      location.reload();
+   },
    iniciarJuego() {
       buscaminas.pedirNivel($(this).val());
       buscaminasGui.generarTablero();
@@ -98,7 +102,6 @@ let buscaminasGui = {
       if (e.buttons == 3) {
          buscaminas.despejar(i, j);
          if (buscaminas.casillaVacia.length > 0) {
-            console.log("entra")
             for (const coordenada of buscaminas.casillaVacia) {
                $("#" + coordenada).css({
                }).fadeOut(200, function () {
