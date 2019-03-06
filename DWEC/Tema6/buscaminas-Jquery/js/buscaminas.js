@@ -11,6 +11,9 @@ let buscaminasGui = {
       location.reload();
    },
    iniciarJuego() {
+      $("#elegirNivel").css({
+         "display":"none"
+      });
       buscaminas.pedirNivel($(this).val());
       buscaminasGui.generarTablero();
    },
