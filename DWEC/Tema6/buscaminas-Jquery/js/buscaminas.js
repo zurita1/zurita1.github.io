@@ -22,7 +22,6 @@ let buscaminasGui = {
          "grid-template-columns": "repeat(" + buscaminas.columnas + ",1fr)",
          "width": buscaminas.columnas * 50 + "px",
          "margin": "auto",
-
       });
 
       for (let i = 0; i < buscaminas.columnas; i++) {
@@ -50,12 +49,12 @@ let buscaminasGui = {
                buscaminasGui.despejar(e, i, j);
             })
 
-
-
             $("#tablero").append($div);
             //console.log($div);
          }
+        
       }
+    
    },
    picar(i, j) {
       if ($final == false) {
