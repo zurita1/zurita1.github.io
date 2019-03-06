@@ -1,0 +1,9 @@
+ #fichero{
+    width: 30%;
+    min-height: 100px;
+    max-height: 220px;
+    border: 1px solid black;
+}
+#fichero{
+    overflow: scroll;
+}
