@@ -1,0 +1,14 @@
+#todo {
+    display: flex;
+     align-items: center; 
+     flex-direction: column; 
+   }
+   #muestraFinal {
+   height: 80px;
+   }
+   #manejo{
+     display: flex;
+   }
+   #reiniciar{
+     margin-right: 20px;
+   }

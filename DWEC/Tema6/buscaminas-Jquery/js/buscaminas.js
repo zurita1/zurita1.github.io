@@ -1,11 +1,10 @@
-$final = false;
-contador = 0;
+let $final = false;
+let contador = 0;
 
 function init() {
    $("#elegirNivel").change(buscaminasGui.iniciarJuego);
    $("#reiniciar").click(buscaminasGui.reiniciar);
 };
-
 
 let buscaminasGui = {
    reiniciar(){
