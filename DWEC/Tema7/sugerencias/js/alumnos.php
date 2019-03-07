@@ -20,8 +20,8 @@ function getNombres($arrayAlumnos, $consulta){
 
     $arrayAlumnosResultado = array();
     foreach ($arrayAlumnos as $key => $alumno) {
-        if (preg_match('/' . $consulta . '/i', $alumno)) {
-            array_push($arrayAlumnosResultado,$alumno);
+        if (preg_match('/^' . $consulta . '/i', $alumno)) {
+            $arrayAlumnosResultado[] = $alumno;
         }
     }
 
