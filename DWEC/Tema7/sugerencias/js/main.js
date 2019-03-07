@@ -11,7 +11,7 @@ function init() {
 
         $.ajax({
             type: "POST",
-            url: 'http://localhost/DWEC/sugerencias/alumnos.php',
+            url: 'http://cpd.iesgrancapitan.org:9119/~qgzura/alumnos.php',
             data: { 'texto': valor },
         }).done(function (data) {
             $sugerencia.html(data);
