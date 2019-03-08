@@ -18,7 +18,6 @@ let buscaminasGui = {
       buscaminasGui.generarTablero();
    },
    generarTablero() {
-      console.log("entra");
       buscaminas.init();
       $("#tablero").css({
          "display": "grid",
@@ -71,7 +70,6 @@ let buscaminasGui = {
          $final = true;
          $("#textoFinal").text("¡Has Ganado!");
          setTimeout(function () {
-            console.log("pasa")
             $('#muestraFinal').show("puff");
          }, 200);
       }
@@ -104,7 +102,6 @@ let buscaminasGui = {
       if (e.buttons == 3) {
          
          buscaminas.despejar(i, j);
-         console.log(buscaminas.casillaVacia);
          if (buscaminas.casillaVacia.size> 0) {
             for (const coordenada of buscaminas.casillaVacia ){
                $("#" + coordenada).css({
@@ -145,7 +142,6 @@ let buscaminasGui = {
    descubrirMinas() {
       $("#textoFinal").text("¡Has perdido!");
       setTimeout(function () {
-         console.log("pasa")
          $('#muestraFinal').show("puff");
       }, 200);
       $final = true;
@@ -155,7 +151,6 @@ let buscaminasGui = {
          for (let j = 0; j < buscaminas.columnas(); j++) {
             let $valor = $("#" + i + "-" + j)
             if (buscaminas.tableroSolucion[i][j] === "x") {
-               console.log("no es bandera");
                contador += 100;
                if (buscaminas.tableroBandera !== "B") {
                   

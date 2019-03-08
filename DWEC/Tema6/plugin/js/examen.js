@@ -65,7 +65,6 @@
                 
                 inputError[0].focus();
             } else {
-                console.log("else")
                 $.ajax({
                     url: "texto.txt",
                     success: function (mensaje) {
