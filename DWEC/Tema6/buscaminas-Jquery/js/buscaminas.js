@@ -1,172 +1,249 @@
-let $final = false;
-let contador = 0;
+let buscaminas = (function () {
+        let tablero= [],
+        tableroSolucion= [],
+        tableroBandera=[],
+        casillasResultanteA= [],
+        filas= 0,
+        columnas= 0,
+        minas= 0,
+        nivel= "",
+        //guardo casillas 
+        casillaPulsada= [],
+        casillaVacia= new Set(),
+        nuevacasillaVacia=[],
+        casillasResultante= 0,
+        //bandera
+        pulsada= [],
+        sumarBanderas= 0;
 
-function init() {
-   $("#elegirNivel").change(buscaminasGui.iniciarJuego);
-   $("#reiniciar").click(buscaminasGui.reiniciar);
-};
 
-let buscaminasGui = {
-   reiniciar(){
-      location.reload();
-   },
-   iniciarJuego() {
-      $("#elegirNivel").css({
-         "display":"none"
-      });
-      buscaminas.pedirNivel($(this).val());
-      buscaminasGui.generarTablero();
-   },
-   generarTablero() {
-      buscaminas.init();
-      $("#tablero").css({
-         "display": "grid",
-         "grid-template-columns": "repeat(" + buscaminas.columnas + ",1fr)",
-         "width": buscaminas.columnas * 50 + "px",
-         "margin": "auto",
-      });
+       function init() {
+            crearTableros();
+            crearMinas();
+            mostrar();
+        }
+       function reiniciar() {
+            filas = 0;
+            columnas = 0;
+            minas = 0;
+            numBanderas = 0;
+        }
+       function mostrar() {
+            console.log("Tablero Descubierto - Pruebas");
+            console.table(tableroSolucion);
+        }
 
-      for (let i = 0; i < buscaminas.columnas; i++) {
-         for (let j = 0; j < buscaminas.filas; j++) {
-            let $div = $("<div></div>");
+        function picar(x, y) {
+            try {
+                if (tableroSolucion[x][y] === "x") {
+                    return buscaminasGui.descubrirMinas();
+                }
+                descrubirCeros(x, y);
+                pulsada[x][y] = true;
+                actualizaTablero();
+                casillaPulsada.push(x + "-" + y);
+                comprobarVictoria();
+            } catch (e) {
+                console.error(e.message);
 
-            $div.prop("id", "" + i + "-" + j + "");
-            $div.css({
-               "background-color": "black",
-               "width": "50px",
-               "height": "50px",
-               "margin": "1px"
-            })
+            }
+        }
+        function marcar(x, y) {
+            try {
+                if (tableroBandera[x][y] !== "B" && pulsada[x][y] == false) {
+                    tableroBandera[x][y] = "B"
+                    return true;
+                } else if (tableroBandera[x][y] === "B") {
+                    tableroBandera[x][y] = "";
+                    return false;
+                }
 
-            $div.click(function () {
-               buscaminasGui.picar(i, j)
-
-            })
-
-            $div.mousedown(function (e) {
-               buscaminasGui.marcar(e, i, j);
-            })
-
-            $div.mousedown(function (e) {
-               buscaminasGui.despejar(e, i, j);
-            })
-
-            $("#tablero").append($div);
-            //console.log($div);
-         }
-        
-      }
-    
-   },
-   picar(i, j) {
-      if ($final == false) {
-         if (buscaminas.tableroBandera[i][j] === "B")
-            return true;
-         else
-            buscaminas.picar(i, j);
-         buscaminasGui.actualizarTablero();
-      }
-      if (buscaminas.comprobarVictoria()) {
-         $final = true;
-         $("#textoFinal").text("¡Has Ganado!");
-         setTimeout(function () {
-            console.log("pasa")
-            $('#muestraFinal').show("puff");
-         }, 200);
-      }
-   },
-   marcar(e, i, j) {
-      if ($final == false) {
-         if (e.buttons == 2) {
-            let $valorM = $("#" + i + "-" + j)
-            buscaminasGui.eliminaMenuContextual();
-
-            if (buscaminas.marcar(i, j)) {
-               $valorM.css({
-                  "background-color": "blue",
-               }).fadeOut("slow", "linear", function () {
-                  $(this).fadeIn(700);
-               });
+            } catch (e) {
+                console.log(e.message);
+            }
+        }
+        function despejar(i, z) {
+            casillaVacia.clear();
+            sumarBanderas = 0;
+            if (contarBanderas(i, z) === tablero[i][z]) {
+                for (let j = Math.max(i - 1, 0); j <= Math.min(i + 1, filas - 1); j++)
+                    for (let k = Math.max(z - 1, 0); k <= Math.min(z + 1, columnas - 1); k++) {
+                        if (tableroBandera[j][k] !== "B")
+                            picar(j, k);
+                    }
             } else {
-               if (buscaminas.pulsada[i][j] !== true)
-                  $valorM.css({
-                     "background-color": "black",
-                  }).fadeOut("fast", function () {
-                     $(this).fadeIn(400);
-                  });
+                
+                for (let j = Math.max(i - 1, 0); j <= Math.min(i + 1, filas - 1); j++) {
+                    for (let k = Math.max(z - 1, 0); k <= Math.min(z + 1, columnas - 1); k++) {
+                        if (tableroBandera[j][k] !== "B" && pulsada[j][k] == false) {
+                            casillaVacia.add(j + "-" + k);
+                        }
+                    }
+                }
+                console.log(casillaVacia);
             }
-
-         }
-      }
-   },
-   despejar(e, i, j) {
-      if (e.buttons == 3) {
-         buscaminas.despejar(i, j);
-         if (buscaminas.casillaVacia.length > 0) {
-            for (const coordenada of buscaminas.casillaVacia) {
-               $("#" + coordenada).css({
-               }).fadeOut(200, function () {
-                  $("#" + coordenada).fadeIn(200);
-               });
+            
+        }
+        function contarBanderas(i, z) {
+            for (let j = Math.max(i - 1, 0); j <= Math.min(i + 1, filas - 1); j++) {
+                for (let k = Math.max(z - 1, 0); k <= Math.min(z + 1, columnas - 1); k++) {
+                    if (tableroBandera[j][k] === "B") {
+                        sumarBanderas++;
+                    }
+                }
             }
-         }
-      }
-   },
-   eliminaMenuContextual() {
-      $("#tablero").contextmenu(function (event) {
-         event.preventDefault();
-      })
-   },
-
-   actualizarTablero() {
-      for (const coordenada of buscaminas.casillaPulsada) {
-         let i = coordenada.split("-")[0];
-         let j = coordenada.split("-")[1];
-         let $valor = $("#" + i + "-" + j)
-         if (buscaminas.tableroSolucion[i][j] === 0)
-            $valor.text("");
-         else
-            $valor.text(buscaminas.tableroSolucion[i][j]);
-
-         $valor.css({
-            "background-color": "#CCCCCC",
-            "text-align": "center",
-            "font-size": "40px",
-            "transform": " rotateX(360deg)",
-            "transition-duration": "1s"
-         });
-      }
-   },
-
-   descubrirMinas() {
-      $("#textoFinal").text("¡Has perdido!");
-      setTimeout(function () {
-         console.log("pasa")
-         $('#muestraFinal').show("puff");
-      }, 200);
-      $final = true;
-      let contador = 0;
-
-      for (let i = 0; i < buscaminas.filas; i++) {
-         for (let j = 0; j < buscaminas.columnas; j++) {
-            let $valor = $("#" + i + "-" + j)
-            if (buscaminas.tableroSolucion[i][j] === "x") {
-               contador += 100;
-               if (buscaminas.tableroBandera !== "B") {
-                  setTimeout(function () {
-                     $valor.css({
-                        "background": "red",
-                        "transform": "rotate(1000deg)",
-                        "transition-duration": "2s"
-                     }).animate({
-                        height: "50px",
-                        width: "50px"
-                     }, 1000);
-                  }, contador);
-               }
+            console.log(sumarBanderas);
+            return sumarBanderas;
+        }
+        function comprobarVictoria() {
+            if (casillasTotales() === casillasAbiertas()) {
+                return true;
             }
-         }
-      }
-   },
-}
-$(init);
+        }
+        function casillasTotales() {
+            let casilla = 0;
+            for (let i = 0; i < columnas; i++) {
+                for (let j = 0; j < filas; j++) {
+                    if (tableroSolucion[i][j] !== "x") {
+                        casilla++;
+                    }
+                }
+            }
+            return casilla;
+        }
+        function casillasAbiertas() {
+            let casilla = 0;
+            for (let i = 0; i < columnas; i++) {
+                for (let j = 0; j < filas; j++) {
+                    if (pulsada[i][j] === true) {
+                        casilla++;
+                    }
+                }
+            }
+            return casilla;
+        }
+        function pedirNivel(dificultad) {
+            switch (dificultad) {
+                case "facil":
+                    filas = 8;
+                    columnas = 8;
+                    minas = 10;
+                    numBanderas = 10;
+                    break;
+                case "intermedio":
+                    filas = 16;
+                    columnas = 16;
+                    minas = 40;
+                    numBanderas = 40;
+                    break;
+                case "experto":
+                    filas = 20;
+                    columnas = 20;
+                    minas = 99;
+                    numBanderas = 99;
+                    break;
+                default:
+                    break;
+            }
+        }
+        function getFila(){
+            return filas;
+        }
+        function getColumna(){
+            return columnas;
+        }
+        function getSumarBanderas(){
+            return sumarBanderas;
+        }
+        function crearTableros() {
+            for (let i = 0; i < filas; i++) {
+                tablero[i] = [];
+                tableroSolucion[i] = [];
+                pulsada[i] = [];
+                tableroBandera[i] = [];
+                casillasResultanteA[i] = [];
+                for (let j = 0; j < columnas; j++) {
+                    tablero[i][j] = 0;
+                    tableroSolucion[i][j] = 0;
+                    pulsada[i][j] = false;
+                    tableroBandera[i][j] = "";
+                    casillasResultanteA[i][j] = false
+                }
+            }
+        }
+
+        function crearMinas() {
+            for (let i = 0; i < minas; i++) {
+                let fila = Math.floor(Math.random() * (filas - 1 - 0)) + 0;
+                let columna = Math.floor(Math.random() * (columnas - 1 - 0)) + 0;
+
+                while (tableroSolucion[fila][columna] === "x") {
+                    fila = Math.floor(Math.random() * (filas - 1 - 0)) + 0;
+                    columna = Math.floor(Math.random() * (columnas - 1 - 0)) + 0;
+                }
+                tableroSolucion[fila][columna] = "x";
+
+                for (let j = Math.max(fila - 1, 0); j <= Math.min(fila + 1, filas - 1); j++)
+                    for (let k = Math.max(columna - 1, 0); k <= Math.min(columna + 1, columnas - 1); k++)
+                        if (tableroSolucion[j][k] !== "x")
+                            tableroSolucion[j][k] += 1;
+            }
+        }
+
+        function descrubirCeros(x, y) {
+            if (tableroSolucion[x][y] === 0) {
+
+                for (let j = Math.max(x - 1, 0); j <= Math.min(x + 1, filas - 1); j++)
+                    for (let k = Math.max(y - 1, 0); k <= Math.min(y + 1, columnas - 1); k++) {
+                        if (pulsada[j][k] === false) {
+                            pulsada[j][k] = true;
+                            casillaPulsada.push(j + "-" + k);
+                            picar(j, k);
+                        }
+                    }
+
+            }
+        }
+        function actualizaTablero() {
+            for (let i = 0; i < filas; i++) {
+                for (let j = 0; j < columnas; j++) {
+                    if (pulsada[i][j] == true) {
+                        tablero[i][j] = tableroSolucion[i][j];
+                    }
+                }
+            }
+        }
+        function getCasillaVaciaLength(){
+            return casillaVacia.length;
+        } 
+    
+    return {
+        init: init,
+        columnas:getColumna,
+        filas: getFila,
+        nuevacasillaVacia:nuevacasillaVacia,
+        getCasillaVaciaLength:getCasillaVaciaLength,
+        sumarBanderas:getSumarBanderas,
+        casillaVacia:casillaVacia,
+        casillaPulsada:casillaPulsada,
+        pulsada:pulsada,
+        tableroBandera:tableroBandera,
+        tableroSolucion:tableroSolucion,
+        casillasResultanteA:casillasResultanteA,
+        reiniciar: reiniciar,
+        picar: picar,
+        mostrar: mostrar,
+        marcar: marcar,
+        despejar: despejar,
+        contarBanderas: contarBanderas,
+        comprobarVictoria: comprobarVictoria,
+        casillasTotales: casillasTotales,
+        casillasAbiertas: casillasAbiertas,
+        pedirNivel: pedirNivel,
+        crearTableros: crearTableros,
+        crearMinas: crearMinas,
+        descrubirCeros: descrubirCeros,
+        actualizaTablero: actualizaTablero
+       
+    }
+})();
